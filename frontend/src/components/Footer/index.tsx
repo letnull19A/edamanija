@@ -12,16 +12,16 @@ export default function Footer() {
               <h2 className={style.footerTitle}>Едамания</h2>
             </li>
             <li className={style.footerLink}>
-                <Link href={'/'}>Контакты</Link>
+              <Link href={'/'}>Контакты</Link>
             </li>
             <li className={style.footerLink}>
-                <Link href={'/about'}>О Нас</Link>
+              <Link href={'/about'}>О Нас</Link>
             </li>
             <li className={style.footerLink}>
-                <Link href={'/policy/privacy'}>Политика конфедациальности</Link>
+              <Link href={'/policy/privacy'}>Политика конфедациальности</Link>
             </li>
             <li className={style.footerLink}>
-                <Link href={'/policy/returning'}>Политика возврата</Link>
+              <Link href={'/policy/returning'}>Политика возврата</Link>
             </li>
           </ul>
           <ul className={style.footerColumn}>2</ul>

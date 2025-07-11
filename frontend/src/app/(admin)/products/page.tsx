@@ -1,5 +1,3 @@
 export default function Products() {
-    return (
-        <>products list</>
-    )
+  return <>products list</>
 }
