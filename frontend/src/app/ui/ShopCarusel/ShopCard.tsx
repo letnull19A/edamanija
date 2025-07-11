@@ -19,7 +19,7 @@ export default function ShopCard(props: TShopCardProp) {
     <div className={style.shopCard}>
       <div className={style.shopCardBackground} style={cardStyle}>
         <div className={style.shopCardOverlay}>
-            <span>{title}</span>
+          <span>{title}</span>
         </div>
       </div>
     </div>
