@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import style from './style.module.css'
 
 export type TShopCardProp = {
   id: string
@@ -8,14 +8,20 @@ export type TShopCardProp = {
 }
 
 export default function ShopCard(props: TShopCardProp) {
-  const { id, imageUrl, title, backgroundColor } = props
+  const { imageUrl, backgroundColor, title } = props
+
+  const cardStyle = {
+    backgroundImage: `url(${imageUrl})`,
+    backgroundColor: backgroundColor,
+  }
 
   return (
-    <div className=''>
-      <div style={{ backgroundColor: backgroundColor }}>
-        <Image width={270} height={100} src={imageUrl} alt={'some image'} />
+    <div className={style.shopCard}>
+      <div className={style.shopCardBackground} style={cardStyle}>
+        <div className={style.shopCardOverlay}>
+            <span>{title}</span>
+        </div>
       </div>
-      <div className=''></div>
     </div>
   )
 }
