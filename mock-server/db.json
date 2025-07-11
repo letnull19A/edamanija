@@ -1,0 +1,34 @@
+{
+  "partners": [
+    {
+      "id": "0",
+      "title": "FixPrice",
+      "imageUrl": "fixprice.png",
+      "backgroundColor": "#f5f4f2"
+    },
+    {
+      "id": "1",
+      "title": "Магнит",
+      "imageUrl": "magnite.png",
+      "backgroundColor": "#e30613"
+    },
+    {
+      "id": "2",
+      "title": "Лента",
+      "imageUrl": "lenta.png",
+      "backgroundColor": "#024592"
+    },
+    {
+      "id": "3",
+      "title": "ВкусВилл",
+      "imageUrl": "vkusvill.png",
+      "backgroundColor": "#2dbe64"
+    }
+  ],
+  "products": [
+    {
+        "id": "",
+        "name": ""
+    }
+  ]
+}
