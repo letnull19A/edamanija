@@ -1,7 +1,20 @@
-# Chat-x project
+# Едамания - сервис доставки еды с ресторанов и магазинов
 
-this is project created as box solution for re-using in another projects.
+## О проекте
 
-<br/>
+Проект разработан для учебных целей, подробнее изучить next.js
 
-solution use nodejs
+## Деплой
+
+### Хардкор
+
+### Docker (лёгкий и простой)
+
+- клонируем репо к себе на компутахтер/сервер
+  <br/><code>$ git clone <ссылка на репо></code>
+- накатываем если собираем для прод версии
+  <br/><code>$ docker-compose -f ./docker/docker-compose.prod.yaml up -d</code>
+- для дев версии
+  <br/><code>$ docker-compose -f ./docker/docker-compose.dev.yaml up -d</code>
+- для mock версии (демку показать)
+  <br/><code>$ docker-compose -f ./docker/docker-compose.mock.yaml up -d</code>

@@ -1,4 +1,18 @@
 {
+  "partners": [
+    {
+      "id": "0",
+      "title": "FixPrice",
+      "imageUrl": "fixprice.png",
+      "backgroundColor": "#f5f4f2"
+    },
+    {
+      "id": "1",
+      "title": "Магнит",
+      "imageUrl": "magnite.png",
+      "backgroundColor": "#e3061"
+    }
+  ],
   "products": [
     {
         "id": "",
