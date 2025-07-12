@@ -3,10 +3,10 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { PrimeReactProvider } from 'primereact/api'
 import Container from '@/components/Container/layout'
 import Header from './ui/Header'
+import Footer from '@/components/Footer'
 import './globals.css'
 import './theme.css'
 import 'primeicons/primeicons.css'
-import Footer from '@/components/Footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,7 +33,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <PrimeReactProvider>
           <Header />
-          <Container>{children}</Container>
+          <main>
+            <Container>{children}</Container>
+          </main>
           <Footer />
         </PrimeReactProvider>
       </body>

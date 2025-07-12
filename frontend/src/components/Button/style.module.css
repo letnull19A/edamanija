@@ -1,0 +1,12 @@
+.button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--pink-300), var(--orange-600));
+  border: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: linear-gradient(225deg, var(--pink-200), var(--orange-400));
+  box-shadow: 10px 10px 10px var(--pink-100) -10px -10px 10px var(--orange-400);
+}
