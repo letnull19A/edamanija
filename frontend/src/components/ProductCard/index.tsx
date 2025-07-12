@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { Button } from 'primereact/button'
-import { Card } from 'primereact/card'
+import Button from '@/components/Button'
+import Card from '@/components/Card'
 import { Tag } from 'primereact/tag'
 import style from './style.module.css'
 
@@ -27,7 +27,6 @@ export default function ProductCard(props: TProductCardProps) {
     <div className='card flex justify-content-center'>
       <Card
         title={title}
-        subTitle='Card subtitle'
         footer={footer}
         header={header}
         className={style.productCard}

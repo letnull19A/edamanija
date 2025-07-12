@@ -69,3 +69,18 @@
 .productCardButtonLoading {
   height: 39px !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  .productCardDescription::after {
+    background: linear-gradient(to bottom, transparent, var(--gray-800));
+  }
+
+  .productCard {
+    border: 1px solid var(--surface-900);
+  }
+
+  .productCardDescription,
+  .productCardTitle {
+    color: var(--gray-100);
+  }
+}

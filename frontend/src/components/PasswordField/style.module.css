@@ -29,3 +29,23 @@
   font-weight: 500;
   color: var(--surface-600);
 }
+
+@media (prefers-color-scheme: dark) {
+  .passwordField input,
+  .passwordField input::placeholder {
+    color: var(--surface-400);
+  }
+
+  .passwordField input {
+    background-color: var(--gray-800);
+    border-color: var(--gray-800);
+    color: var(--surface-0);
+  }
+
+  .passwordField input:active,
+  .passwordField input:hover,
+  .passwordField input:enabled:focus {
+    border: 1px solid var(--gray-800) !important;
+    box-shadow: none !important;
+  }
+}

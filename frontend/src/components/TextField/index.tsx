@@ -10,9 +10,13 @@ type TTextFieldProps = {
 export default function TextField(props: TTextFieldProps) {
   return (
     <div className={style.textField}>
-      <span className={style.textFieldTitle}>{props.title}</span>
+      {props.title && (
+        <span className={style.textFieldTitle}>{props.title}</span>
+      )}
       <InputText {...props} />
-      <span className={style.textFieldHelpText}>{props.helpText}</span>
+      {props.helpText && (
+        <span className={style.textFieldHelpText}>{props.helpText}</span>
+      )}
     </div>
   )
 }

@@ -1,10 +1,11 @@
 'use client'
 
-import { Button } from 'primereact/button'
-import style from './style.module.css'
-import { InputText } from 'primereact/inputtext'
+import { Button as PrimeReactButton } from 'primereact/button'
 import Container from '@/components/Container/layout'
+import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
+import style from './style.module.css'
+import TextField from '@/components/TextField'
 
 export default function Header() {
   const router = useRouter()
@@ -13,16 +14,18 @@ export default function Header() {
     <header className={style.header}>
       <Container>
         <h3 className={style.headerLogo}>Едамания</h3>
-        <InputText className={style.headerSearch} placeholder='Найти товар' />
+        <div className={style.headerSearch}>
+          <TextField placeholder='Найти товар' />
+        </div>
         <Button className={style.headerButtonSearch} label='Найти' />
         <div className={style.headerAuth}>
-          <Button
+          <PrimeReactButton
             text
             icon='pi pi-user'
             link
             onClick={() => router.push('/auth')}
           />
-          <Button text icon='pi pi-shopping-cart' link />
+          <PrimeReactButton text icon='pi pi-shopping-cart' link />
         </div>
       </Container>
     </header>

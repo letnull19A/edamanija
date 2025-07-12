@@ -4,6 +4,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--surface-a);
 }
 
 * {
@@ -15,4 +16,11 @@ main {
   min-height: calc(100vh - 64px - 450px);
   color: var(--surface-600);
   margin-block: 50px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: var(--gray-900);
+  }
 }

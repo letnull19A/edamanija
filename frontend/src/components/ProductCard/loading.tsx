@@ -10,7 +10,6 @@ export default function LoadingProductCard() {
       className={style.productCardTitleLoading}
     ></Skeleton>
   )
-  const subTitle = <Skeleton height='1rem' className='mb-2 mt-2'></Skeleton>
 
   const footer = (
     <Skeleton className={style.productCardButtonLoading}></Skeleton>
@@ -20,7 +19,6 @@ export default function LoadingProductCard() {
     <div className='card flex justify-content-center'>
       <Card
         title={title}
-        subTitle={subTitle}
         footer={footer}
         header={header}
         className={style.productCard}
