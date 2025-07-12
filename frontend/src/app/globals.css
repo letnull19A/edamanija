@@ -12,5 +12,5 @@ body {
 main {
   min-height: calc(100vh - 64px - 450px);
   color: var(--surface-600);
-  margin-top: 50px;
+  margin-block: 50px;
 }
