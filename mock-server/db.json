@@ -29,27 +29,37 @@
     {
       "id": "0",
       "title": "Добрый кола",
-      "imageUrl": "coca_cola.jpg"
+      "imageUrl": "dobry_cola.png",
+      "price": "120",
+      "is_availible": true
     },
     {
       "id": "1",
       "title": "Rich Tea",
-      "imageUrl": "rich_tea.jpg"
+      "imageUrl": "rich_tea.png",
+      "price": "120",
+      "is_availible": true
     },
     {
       "id": "2",
       "title": "Redbull summer edition",
-      "imageUrl": "redbull_summer.webp"
+      "imageUrl": "redbull_summer.png",
+      "price": "120",
+      "is_availible": true
     },
     {
       "id": "3",
       "title": "Redbull spring edition",
-      "imageUrl": "redbull_spring.webp"
+      "imageUrl": "redbull_spring.png",
+      "price": "120",
+      "is_availible": true
     },
     {
       "id": "4",
       "title": "Охотничья",
-      "imageUrl": "pizza_0.avif"
+      "imageUrl": "pizza_0.avif",
+      "price": "120",
+      "is_availible": true
     }
   ]
 }

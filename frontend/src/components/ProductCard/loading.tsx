@@ -3,7 +3,7 @@ import style from './style.module.css'
 import { Skeleton } from 'primereact/skeleton'
 
 export default function LoadingProductCard() {
-  const header = <Skeleton width='100%' height='150px'></Skeleton>
+  const header = <Skeleton width='100%' height='270px'></Skeleton>
   const title = (
     <Skeleton
       height='2rem'
@@ -28,13 +28,6 @@ export default function LoadingProductCard() {
             <Skeleton className={style.productCardTagLoading}></Skeleton>
             <Skeleton className={style.productCardTagLoading}></Skeleton>
             <Skeleton className={style.productCardTagLoading}></Skeleton>
-          </div>
-          <div className={style.productCardTextLoading}>
-            <Skeleton className={style.productCardTextLineLoading}></Skeleton>
-            <Skeleton className={style.productCardTextLineLoading}></Skeleton>
-            <Skeleton className={style.productCardTextLineLoading}></Skeleton>
-            <Skeleton className={style.productCardTextLineLoading}></Skeleton>
-            <Skeleton className={style.productCardTextLineLoading}></Skeleton>
           </div>
         </div>
       </Card>

@@ -5,14 +5,29 @@ import { Tag } from 'primereact/tag'
 import style from './style.module.css'
 
 type TProductCardProps = {
+  id: string
   title: string
+  imageUrl: string
+  price: number
+  is_availible: boolean
 }
 
 export default function ProductCard(props: TProductCardProps) {
   const title = <h4 className={style.productCardTitle}>{props.title}</h4>
 
   const header = (
-    <Image alt='Card' width={100} height={150} src='/usercard.png' />
+    <Image
+      alt='Card'
+      quality={100}
+      objectFit='cover'
+      style={{
+        position: 'relative',
+        top: '-30px',
+      }}
+      width={100}
+      height={270}
+      src={`${props.imageUrl}`}
+    />
   )
 
   const footer = (
@@ -37,12 +52,6 @@ export default function ProductCard(props: TProductCardProps) {
             <Tag rounded value='Primary'></Tag>
             <Tag rounded value='Primary'></Tag>
           </div>
-          <p className={style.productCardDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
-            sed consequuntur error repudiandae numquam deserunt quisquam
-            repellat libero asperiores earum nam nobis, culpa ratione quam
-            perferendis esse, cupiditate neque quas!
-          </p>
         </div>
       </Card>
     </div>
