@@ -1,0 +1,13 @@
+.registrationButton {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.registrationTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registrationPanel a {
+  margin-top: 15px;
+}
