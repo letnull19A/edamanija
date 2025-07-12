@@ -1,0 +1,31 @@
+.passwordField {
+  display: flex;
+  flex-direction: column;
+  margin-block: 10px;
+}
+
+.passwordField input {
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.passwordField input::placeholder {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: var(--surface-500);
+}
+
+.passwordField input:active,
+.passwordField input:hover,
+.passwordField input:enabled:focus {
+  border: 1px solid var(--surface-600) !important;
+  box-shadow: none !important;
+}
+
+.passwordHelpText,
+.passwordFieldTitle {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--surface-600);
+}
