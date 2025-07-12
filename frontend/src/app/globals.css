@@ -8,3 +8,9 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
+
+main {
+  min-height: calc(100vh - 64px - 450px);
+  color: var(--surface-600);
+  margin-block: 50px;
+}
