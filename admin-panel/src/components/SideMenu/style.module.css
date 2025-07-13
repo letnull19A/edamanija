@@ -1,0 +1,18 @@
+.sideMenu {
+  width: var(--side-menu-width);
+  height: calc(100svh - var(--header-height));
+  position: fixed;
+  top: var(--header-height);
+  background-color: var(--gray-300);
+}
+
+.sideMenuContent {
+  width: 100%;
+  background-color: #00000000;
+  border: none;
+}
+
+.sideMenuContent li {
+  background-color: #00000000;
+  padding-inline-start: 48px;
+}

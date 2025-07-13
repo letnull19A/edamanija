@@ -6,11 +6,13 @@ import style from './style.module.css'
 
 export default function AuthForm() {
   return (
-    <Card>
+    <Card className={style.authPanel}>
       <h1>Аутентификация</h1>
-      <TextField title='Логин' />
-      <PasswordField title='Пароль' />
-      <Button label='Войти' className={style.authButton} />
+      <form action=''>
+        <TextField title='Логин' />
+        <PasswordField title='Пароль' />
+        <Button label='Войти' className={style.authButton} />
+      </form>
     </Card>
   )
 }

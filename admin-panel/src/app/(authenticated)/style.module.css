@@ -1,0 +1,4 @@
+.authenticatedLayout {
+    display: flex;
+    flex-direction: row;
+}

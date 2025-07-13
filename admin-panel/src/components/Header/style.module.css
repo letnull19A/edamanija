@@ -1,4 +1,5 @@
 header.header {
+  position: fixed;
   width: 100%;
   height: var(--header-height);
   background-color: var(--green-600);
