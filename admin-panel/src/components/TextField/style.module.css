@@ -1,0 +1,33 @@
+.textField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-block: 10px;
+}
+
+.textField input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.textField input::placeholder {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: var(--surface-500);
+}
+
+.textField input:active,
+.textField input:hover,
+.textField input:enabled:focus {
+  border: 1px solid var(--surface-600) !important;
+  box-shadow: none !important;
+}
+
+.textFieldTitle,
+.textFieldHelpText {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--surface-600);
+}
