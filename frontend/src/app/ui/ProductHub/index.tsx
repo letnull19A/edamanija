@@ -1,13 +1,6 @@
+import { TProduct } from '@/libs/types/Product'
 import ProductCard from '../../../components/ProductCard'
 import style from './style.module.css'
-
-type TProduct = {
-  id: string
-  title: string
-  imageUrl: string
-  price: number
-  is_availible: boolean
-}
 
 async function fetchProducts(): Promise<Array<TProduct>> {
   const result = await fetch(`${process.env.NEXT_PUBLIC_API}products`)
@@ -28,7 +21,7 @@ export default async function ProductHub() {
   if (products) {
     return (
       <div className={style.productHub}>
-        {products.map((item, index) => (
+        {products.slice(0, 4).map((item, index) => (
           <ProductCard {...item} key={index} />
         ))}
       </div>

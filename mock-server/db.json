@@ -23,43 +23,78 @@
       "title": "ВкусВилл",
       "imageUrl": "vkusvill.png",
       "backgroundColor": "#2dbe64"
+    },
+    {
+      "id": "3",
+      "title": "Додо пицца",
+      "imageUrl": "dodo.png",
+      "backgroundColor": "#ff6900"
     }
+  ],
+  "categories": [
+    { "id": "0", "title": "напитки" },
+    { "id": "1", "title": "холодный чай", "parentId": "0" },
+    { "id": "2", "title": "энергетические напитки", "parentId": "0" },
+    { "id": "3", "title": "пицца" },
+    { "id": "4", "title": "лимонады", "parentId": "0" }
   ],
   "products": [
     {
       "id": "0",
       "title": "Добрый кола",
       "imageUrl": "dobry_cola.png",
-      "price": "120",
-      "is_availible": true
+      "price": "90",
+      "isAvailible": true,
+      "categories": [{ "id": "0", "title": "напитки" }],
+      "shops": [
+        { "id": "0", "title": "магнит", "color": "#e30613" },
+        { "id": "1", "title": "пятёрочка", "color": "#e30613" }
+      ]
     },
     {
       "id": "1",
       "title": "Rich Tea",
       "imageUrl": "rich_tea.png",
       "price": "120",
-      "is_availible": true
+      "isAvailible": true,
+      "categories": [
+        { "id": "0", "title": "напитки" },
+        { "id": "1", "title": "холодный чай" }
+      ],
+      "shops": [
+        { "id": "0", "title": "магнит", "color": "#e30613" },
+        { "id": "1", "title": "пятёрочка", "color": "#e30613" }
+      ]
     },
     {
       "id": "2",
       "title": "Redbull summer edition",
       "imageUrl": "redbull_summer.png",
       "price": "120",
-      "is_availible": true
+      "isAvailible": false,
+      "categories": [
+        { "id": "0", "title": "напитки" },
+        { "id": "2", "title": "энергетические напитки" }
+      ]
     },
     {
       "id": "3",
       "title": "Redbull spring edition",
       "imageUrl": "redbull_spring.png",
-      "price": "120",
-      "is_availible": true
+      "price": "150",
+      "isAvailible": true,
+      "shops": [
+        { "id": "0", "title": "магнит", "color": "#e30613" },
+        { "id": "1", "title": "лента", "color": "#024592" }
+      ]
     },
     {
       "id": "4",
       "title": "Охотничья",
       "imageUrl": "pizza_0.avif",
-      "price": "120",
-      "is_availible": true
+      "price": "560",
+      "isAvailible": true,
+      "shops": [{ "id": "0", "title": "додо", "color": "#ff6900" }]
     }
   ]
 }

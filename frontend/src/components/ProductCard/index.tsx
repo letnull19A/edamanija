@@ -1,16 +1,11 @@
 import Image from 'next/image'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
+import { TProduct } from '@/libs/types/Product'
 import { Tag } from 'primereact/tag'
 import style from './style.module.css'
 
-type TProductCardProps = {
-  id: string
-  title: string
-  imageUrl: string
-  price: number
-  is_availible: boolean
-}
+type TProductCardProps = TProduct
 
 export default function ProductCard(props: TProductCardProps) {
   const title = <h4 className={style.productCardTitle}>{props.title}</h4>
@@ -32,28 +27,36 @@ export default function ProductCard(props: TProductCardProps) {
 
   const footer = (
     <Button
+      disabled={!props.isAvailible}
       className={style.productCardFooterButton}
-      label='Добавить в корзину'
+      label={`Добавить в корзину ${props.price} руб.`}
       icon='pi pi-plus'
     />
   )
 
+  const cardClassName = props.isAvailible
+    ? style.productCard
+    : style.productCardNotAvailible
+
   return (
-    <div className='card flex justify-content-center'>
-      <Card
-        title={title}
-        footer={footer}
-        header={header}
-        className={style.productCard}
-      >
-        <div>
-          <div className={style.productCardTags}>
-            <Tag rounded value='Primary'></Tag>
-            <Tag rounded value='Primary'></Tag>
-            <Tag rounded value='Primary'></Tag>
-          </div>
+    <Card
+      title={title}
+      footer={footer}
+      header={header}
+      className={cardClassName}
+    >
+      <div>
+        <div className={style.productCardTags}>
+          {props.shops?.slice(0, 2).map((item, index) => (
+            <Tag
+              rounded
+              value={item.title}
+              key={index}
+              style={{ backgroundColor: item.color }}
+            ></Tag>
+          ))}
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   )
 }

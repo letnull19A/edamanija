@@ -16,21 +16,19 @@ export default function LoadingProductCard() {
   )
 
   return (
-    <div className='card flex justify-content-center'>
-      <Card
-        title={title}
-        footer={footer}
-        header={header}
-        className={style.productCard}
-      >
-        <div>
-          <div className={style.productCardTags}>
-            <Skeleton className={style.productCardTagLoading}></Skeleton>
-            <Skeleton className={style.productCardTagLoading}></Skeleton>
-            <Skeleton className={style.productCardTagLoading}></Skeleton>
-          </div>
+    <Card
+      title={title}
+      footer={footer}
+      header={header}
+      className={style.productCardLoading}
+    >
+      <div>
+        <div className={style.productCardTags}>
+          <Skeleton className={style.productCardTagLoading}></Skeleton>
+          <Skeleton className={style.productCardTagLoading}></Skeleton>
+          <Skeleton className={style.productCardTagLoading}></Skeleton>
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   )
 }
