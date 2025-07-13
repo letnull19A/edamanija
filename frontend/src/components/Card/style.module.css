@@ -1,0 +1,26 @@
+.card {
+  border-radius: 16px !important;
+  box-shadow: none;
+  padding: 0;
+  transition: 0.2s;
+  position: relative;
+}
+
+.card:hover {
+  transition: 0.2s;
+  box-shadow:
+    -10px -10px 20px var(--pink-100),
+    10px 10px 20px var(--orange-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: var(--gray-800);
+  }
+
+  .card:hover {
+    box-shadow:
+      -7px -7px 20px var(--pink-400),
+      7px 7px 20px var(--orange-400);
+  }
+}

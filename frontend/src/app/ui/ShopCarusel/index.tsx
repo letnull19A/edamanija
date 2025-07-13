@@ -25,6 +25,7 @@ export default async function ShopCarusel() {
         value={partners}
         numVisible={3}
         numScroll={3}
+        showIndicators={false}
         itemTemplate={ShopCard}
       />
     )

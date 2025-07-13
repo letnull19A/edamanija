@@ -1,16 +1,18 @@
 .textField {
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-block: 10px;
 }
 
 .textField input {
+  width: 100%;
   padding: 10px 20px;
   border-radius: 8px;
 }
 
 .textField input::placeholder {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 400;
   color: var(--surface-500);
 }
@@ -28,4 +30,24 @@
   margin-bottom: 5px;
   font-weight: 500;
   color: var(--surface-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .textField input,
+  .textField input::placeholder {
+    color: var(--surface-400);
+  }
+
+  .textField input {
+    background-color: var(--gray-800);
+    border-color: var(--gray-800);
+    color: var(--surface-0);
+  }
+
+  .textField input:active,
+  .textField input:hover,
+  .textField input:enabled:focus {
+    border: 1px solid var(--gray-800) !important;
+    box-shadow: none !important;
+  }
 }

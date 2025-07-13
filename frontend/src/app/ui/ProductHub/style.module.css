@@ -1,7 +1,7 @@
 .productHub {
-    display: grid;
-    column-gap: 30px;
-    row-gap: 10px;
-    height: 500px;
-    grid-template-columns: repeat(4, .25fr);
+  display: grid;
+  column-gap: 30px;
+  row-gap: 60px;
+  height: auto;
+  grid-template-columns: repeat(4, 0.25fr);
 }

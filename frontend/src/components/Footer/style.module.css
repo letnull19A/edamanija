@@ -31,7 +31,7 @@ footer.footer {
   color: var(--gray-600);
   transition: 0.2s;
   cursor: pointer;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 .footerTitle:hover {
@@ -39,14 +39,20 @@ footer.footer {
 }
 
 .footerLink a {
-    font-size: 0.8em;
-    line-height: 2em;
-    color: var(--gray-500);
-    transition: .2s;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
+  font-size: 0.8em;
+  line-height: 2em;
+  color: var(--gray-500);
+  transition: 0.2s;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .footerLink a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  footer.footer {
+    background-color: #141414;
+  }
 }

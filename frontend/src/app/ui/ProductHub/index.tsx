@@ -1,21 +1,18 @@
+import { TProduct } from '@/libs/types/Product'
 import ProductCard from '../../../components/ProductCard'
 import style from './style.module.css'
 
-type TProduct = {
-  title: string
-}
-
-const data: Array<TProduct> = [
-  { title: 'Пиперони' },
-  { title: 'Coca Cola' },
-  { title: 'RedBull' },
-  { title: 'Бургер' },
-]
-
 async function fetchProducts(): Promise<Array<TProduct>> {
-  await new Promise((resolve) => setTimeout(resolve, 4000))
+  const result = await fetch(`${process.env.NEXT_PUBLIC_API}products`)
+    .then((data) => data.json() as unknown as Array<TProduct>)
+    .then((data) =>
+      data.map((element) => ({
+        ...element,
+        imageUrl: `${process.env.NEXT_PUBLIC_S3_STORAGE}${element.imageUrl}`,
+      })),
+    )
 
-  return data
+  return result
 }
 
 export default async function ProductHub() {
@@ -24,8 +21,8 @@ export default async function ProductHub() {
   if (products) {
     return (
       <div className={style.productHub}>
-        {products.map((item, index) => (
-          <ProductCard title={item.title} key={index} />
+        {products.slice(0, 4).map((item, index) => (
+          <ProductCard {...item} key={index} />
         ))}
       </div>
     )
