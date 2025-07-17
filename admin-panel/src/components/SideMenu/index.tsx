@@ -12,7 +12,7 @@ export default function SideMenu() {
           <Link href='/categories'>Категории товаров</Link>
         </li>
         <li>
-          <Link href="/products">Товары</Link>
+          <Link href='/products'>Товары</Link>
         </li>
       </ul>
     </div>

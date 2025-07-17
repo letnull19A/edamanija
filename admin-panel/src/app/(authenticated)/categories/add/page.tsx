@@ -35,7 +35,7 @@ export default function AddCategoryPage() {
         <DynamicDropdown
           value={selectedCity}
           title='Подкатегория'
-          options={data.filter(u => u.parentId === undefined)}
+          options={data.filter((u) => u.parentId === undefined)}
           optionLabel='title'
           onChange={(e: DropdownChangeEvent) => setSelectedCity(e.value)}
         />

@@ -28,7 +28,11 @@ export default function Categories() {
   return (
     <>
       <div className={style.toolPanel}>
-        <Button label='Добавить категорию' icon='pi pi-plus' onClick={() => router.push('categories/add')}/>
+        <Button
+          label='Добавить категорию'
+          icon='pi pi-plus'
+          onClick={() => router.push('categories/add')}
+        />
         <Button
           label='Удалить выбранное'
           icon='pi pi-trash'

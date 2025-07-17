@@ -5,8 +5,8 @@ import {
 import style from './style.module.css'
 
 export type TDropdownProps = {
-    title?: string
-    helpText?: string
+  title?: string
+  helpText?: string
 } & Omit<DropdownProps, 'title'>
 
 export default function Dropdown(props: TDropdownProps) {
