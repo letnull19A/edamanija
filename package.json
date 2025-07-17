@@ -10,9 +10,6 @@
 	"scripts": {
 		"prepare": "husky",
 		"format": "prettier --write **/src/**/*{.js,.ts,.tsx,.jsx}",
-		"dev": "concurrently \"cd frontend && pnpm run dev\" \"cd server && pnpm run start:dev\""
-	},
-	"dependencies": {
-		"json-server": "1.0.0-beta.3"
+		"dev": "pm2 start ecosystem.config.js"
 	}
 }

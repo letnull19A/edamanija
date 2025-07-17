@@ -1,6 +1,7 @@
 .authPanel {
     max-width: 385px;
-    margin: 0 auto
+    margin: 0 auto;
+    margin-top: calc(64px * 2);
 }
 
 .authPanel form {

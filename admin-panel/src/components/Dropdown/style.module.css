@@ -1,0 +1,33 @@
+.dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-block: 10px;
+}
+
+.dropdown input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.dropdown input::placeholder {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: var(--surface-500);
+}
+
+.dropdown input:active,
+.dropdown input:hover,
+.dropdown input:enabled:focus {
+  border: 1px solid var(--surface-600) !important;
+  box-shadow: none !important;
+}
+
+.dropdownTitle,
+.dropdownHelpText {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--surface-600);
+}

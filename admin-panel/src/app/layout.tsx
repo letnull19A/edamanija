@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Providers from './providers'
 import './globals.css'
+import 'primeicons/primeicons.css'
 import 'primereact/resources/themes/lara-light-teal/theme.css'
 
 const geistSans = Geist({
@@ -28,9 +30,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </>
+        </Providers>
       </body>
     </html>
   )

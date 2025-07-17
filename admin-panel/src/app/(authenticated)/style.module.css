@@ -1,4 +1,12 @@
 .authenticatedLayout {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+}
+
+.authenticatedLayoutViewport {
+  width: calc(100% - var(--side-menu-width));
+  height: auto;
+  margin-left: var(--side-menu-width);
+  margin-top: var(--header-height);
+  padding: 20px;
 }
