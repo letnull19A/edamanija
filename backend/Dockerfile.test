@@ -1,0 +1,16 @@
+FROM node:21-alpine3.18
+USER root
+
+WORKDIR /app/backend
+COPY . .
+
+RUN npm i -g pnpm typescript \
+    && rm ./tsconfig.build.json \
+    && mv ./envs/.env.test .env \
+    && rm -rf ./envs \
+    && pnpm install \
+    && pnpm build:test
+
+WORKDIR /app/backend/dist
+
+ENTRYPOINT ["pnpm", "test", "--watchAll"]
