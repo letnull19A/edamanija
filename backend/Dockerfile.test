@@ -1,16 +1,37 @@
+FROM node:21-alpine3.18 AS build
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install --legacy-peer-deps
+
+COPY envs/.env.test ./.env
+COPY nest-cli.json .
+COPY tsconfig.json .
+COPY tsconfig.test.json .
+COPY environment.d.ts .
+COPY src .
+
+RUN npm run build:test && \
+    npm cache clean --force && \
+    rm -rf /root/.npm && \
+    rm tsconfig*.json && \
+    rm environment.d.ts && \
+    rm -rf node_modules && \
+    rm -rf src
+
+FROM node:21-alpine3.18 AS production-installation
+
+WORKDIR /
+
+COPY --from=build ./app/package.json .
+RUN npm install --production --legacy-peer-deps
+
+COPY --from=build ./app/dist .
+
 FROM node:21-alpine3.18
-USER root
+WORKDIR /app
 
-WORKDIR /app/backend
-COPY . .
+COPY --from=production-installation . .
 
-RUN npm i -g pnpm typescript \
-    && rm ./tsconfig.build.json \
-    && mv ./envs/.env.test .env \
-    && rm -rf ./envs \
-    && pnpm install \
-    && pnpm build:test
-
-WORKDIR /app/backend/dist
-
-ENTRYPOINT ["pnpm", "test", "--watchAll"]
+ENTRYPOINT ["npm", "run", "test"]
