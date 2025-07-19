@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
 
+import * as failRegistrationData from './data/failedRegistration.json'
+
 describe('UserService', () => {
   let service: UserService
 
@@ -12,23 +14,19 @@ describe('UserService', () => {
     service = module.get<UserService>(UserService)
   })
 
-  it('should be defined', () => {
-    expect(service).toBeDefined()
+  describe('initialization user service', () => {
+    it('should be defined', () => {
+      expect(service).toBeDefined()
+    })
   })
 
-  // it('try find no existing user by login', async () => {
-  //   const result = await service.findByLogin({ login: 'faviko4567' })
-
-  // })
-
-  // it('find user by login: faviko4567 (exist user)', async () => {
-  //   const result = await service.findByLogin({ login: 'faviko4567' })
-
-  //   expect(result.name).toBe('Иван')
-  //   expect(result.surname).toBe('Фавиков')
-  //   expect(result.fatherName).toBe('Максимович')
-  //   expect(result.email).toBe('favikov1996@yandex.ru')
-  //   expect(result.phone).toBe('+79058735673')
-  //   expect(result.login).toBe('faviko4567')
-  // })
+  describe.each(failRegistrationData)('registration', (form) => {
+    it('allways field', async () => {
+      try {
+        await service.registration(form.form)
+      } catch (e) {
+        expect(JSON.parse(e.message)).toMatchObject(form.errors)
+      }
+    })
+  })
 })
