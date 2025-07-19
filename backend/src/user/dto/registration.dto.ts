@@ -41,11 +41,17 @@ export const RegistrationSchema = extendApi(
           error: 'fatherName should be start with upper-case latter',
         })
         .min(1, { error: 'field length less than 1 latters' })
-        .max(20, { error: 'field should be less than 12 latters' })
+        .max(20, { error: 'field should be less than 20 latters' })
         .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
           error: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
         }),
-      email: z.email('it`s field not email').nonempty('field is empty'),
+      email: z
+        .email('it`s field not email')
+        .max(32, { error: 'field should be less than 32 latters' })
+        .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
+          error: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
+        })
+        .nonempty('field is empty'),
       phone: z.string(),
       gender: z.enum(['MALE', 'FEMALE', 'NOBODY']),
       password: z

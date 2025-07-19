@@ -447,7 +447,7 @@
         "inclusive": true,
         "code": "too_big",
         "path": ["fatherName"],
-        "message": "field should be less than 12 latters"
+        "message": "field should be less than 20 latters"
       }
     ]
   },
