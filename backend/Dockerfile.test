@@ -22,16 +22,10 @@ RUN npm run build:test && \
 
 FROM node:21-alpine3.18 AS production-installation
 
-WORKDIR /
-
-COPY --from=build ./app/package.json .
-RUN npm install --production --legacy-peer-deps
-
-COPY --from=build ./app/dist .
-
-FROM node:21-alpine3.18
 WORKDIR /app
 
-COPY --from=production-installation . .
+COPY --from=build ./app .
+RUN npm install --production --legacy-peer-deps && \
+    npm install jest --legacy-peer-deps
 
 ENTRYPOINT ["npm", "run", "test"]

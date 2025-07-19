@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { User } from './user.entity'
 import { UserEdit } from './dto/edit.dto'
-import { RegistrationUser } from './dto/registration.dto'
+import { RegistrationSchema, RegistrationUser } from './dto/registration.dto'
+import z from 'zod'
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,7 @@ export class UserService {
     return null
   }
 
-  public async fintByPhone(data: { phone: string }): Promise<User | null> {
+  public async findByPhone(data: { phone: string }): Promise<User | null> {
     return null
   }
 
@@ -21,7 +22,11 @@ export class UserService {
     return null
   }
 
-  public async registration(data: RegistrationUser): Promise<User | null> {
-    return null
+  public async registration(data: RegistrationUser): Promise<object | null> {
+    const validData = await RegistrationSchema.parseAsync(data)
+
+    return validData
   }
+
+  public async remove(id: string): Promise<void> {}
 }
