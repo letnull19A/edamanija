@@ -5,15 +5,14 @@ import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
 
 export default function Table() {
-
   const dataOptions = queryOptions({
     queryKey: ['categories'],
     queryFn: async () => {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API}categories`)
-        
+
       return response.json()
     },
-    throwOnError: true
+    throwOnError: true,
   })
 
   const { data } = useSuspenseQuery(dataOptions)
