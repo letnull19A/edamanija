@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "resolveJsonModule": true,
+  "sourceMap": false,
+  "exclude": ["node_modules", "dist"]
+}

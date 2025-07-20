@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { useQuery } from '@tanstack/react-query'
+
 import style from './style.module.css'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
