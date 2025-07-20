@@ -4,8 +4,10 @@ import { useRouter } from 'next/navigation'
 import { Button } from 'primereact/button'
 import dynamic from 'next/dynamic'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
-import style from './style.module.css'
 import { useQuery } from '@tanstack/react-query'
+import { Errors } from '@/components/Errors'
+
+import style from './style.module.css'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
   loading: () => <>Loading component...</>,
@@ -39,9 +41,7 @@ export default function Users() {
         />
       </div>
       <ErrorBoundary
-        errorComponent={({ error }) => (
-          <>Неудалось загрузить данные: {error.message}</>
-        )}
+        errorComponent={({ error }) => <Errors.FailedFatch error={error} />}
       >
         <DynamicTable />
       </ErrorBoundary>

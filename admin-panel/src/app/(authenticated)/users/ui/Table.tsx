@@ -1,3 +1,5 @@
+'use client'
+
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
