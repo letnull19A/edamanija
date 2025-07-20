@@ -15,7 +15,7 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 export default function Categories() {
   const router = useRouter()
 
-  const y = useQuery({queryKey: ['categories']})
+  const y = useQuery({ queryKey: ['categories'] })
   return (
     <>
       <div className={style.toolPanel}>
@@ -42,7 +42,7 @@ export default function Categories() {
           <>Неудалось загрузить данные: {error.message}</>
         )}
       >
-          <DynamicTable />
+        <DynamicTable />
       </ErrorBoundary>
     </>
   )
