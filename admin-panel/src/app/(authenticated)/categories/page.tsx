@@ -5,6 +5,7 @@ import { Button } from 'primereact/button'
 import style from './style.module.css'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
   loading: () => <>Loading component...</>,
@@ -15,9 +16,13 @@ export default function Categories() {
   const dataOptions = queryOptions({
     queryKey: ['categories'],
     queryFn: async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}categories`)
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API}categories`)
 
-      return response.json()
+        return response.json()
+      } catch {
+        return {}
+      }
     },
   })
 
@@ -46,7 +51,13 @@ export default function Categories() {
           onClick={() => refetch()}
         />
       </div>
-      <DynamicTable data={data} />
+      <ErrorBoundary
+        errorComponent={({ error }) => (
+          <>Failed to load content: {error.message}</>
+        )}
+      >
+        <DynamicTable data={data} />
+      </ErrorBoundary>
     </>
   )
 }
