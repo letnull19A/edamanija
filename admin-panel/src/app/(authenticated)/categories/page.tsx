@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { useQuery } from '@tanstack/react-query'
 
 import style from './style.module.css'
+import { Errors } from '@/components/Errors'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
   loading: () => <>Loading component...</>,
@@ -16,7 +17,7 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 export default function Categories() {
   const router = useRouter()
 
-  const y = useQuery({ queryKey: ['categories'] })
+  const categoryQuery = useQuery({ queryKey: ['categories'] })
   return (
     <>
       <div className={style.toolPanel}>
@@ -31,17 +32,15 @@ export default function Categories() {
           severity='danger'
         />
         <Button
-          disabled={y.isFetching}
-          icon={`pi ${y.isFetching ? 'pi-spin' : ''} pi-sync`}
-          label={`${y.isFetching ? 'Обновление данных' : 'Обновить'}`}
+          disabled={categoryQuery.isFetching}
+          icon={`pi ${categoryQuery.isFetching ? 'pi-spin' : ''} pi-sync`}
+          label={`${categoryQuery.isFetching ? 'Обновление данных' : 'Обновить'}`}
           severity='warning'
-          onClick={() => y.refetch()}
+          onClick={() => categoryQuery.refetch()}
         />
       </div>
       <ErrorBoundary
-        errorComponent={({ error }) => (
-          <>Неудалось загрузить данные: {error.message}</>
-        )}
+        errorComponent={({ error }) => <Errors.FailedFatch error={error} />}
       >
         <DynamicTable />
       </ErrorBoundary>
