@@ -1,0 +1,6 @@
+.toolPanel {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-block: 15px;
+}
