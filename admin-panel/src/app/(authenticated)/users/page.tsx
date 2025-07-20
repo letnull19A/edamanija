@@ -3,7 +3,9 @@
 import { useRouter } from 'next/navigation'
 import { Button } from 'primereact/button'
 import dynamic from 'next/dynamic'
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import style from './style.module.css'
+import { useQuery } from '@tanstack/react-query'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
   loading: () => <>Loading component...</>,
@@ -12,6 +14,8 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 
 export default function Users() {
   const router = useRouter()
+
+  const userQuery = useQuery({ queryKey: ['users'] })
 
   return (
     <>
@@ -26,15 +30,21 @@ export default function Users() {
           icon='pi pi-trash'
           severity='danger'
         />
-        {/* <Button
-          disabled={y.isFetching}
-          icon={`pi ${y.isFetching ? 'pi-spin' : ''} pi-sync`}
-          label={`${y.isFetching ? 'Обновление данных' : 'Обновить'}`}
+        <Button
+          disabled={userQuery.isFetching}
+          icon={`pi ${userQuery.isFetching ? 'pi-spin' : ''} pi-sync`}
+          label={`${userQuery.isFetching ? 'Обновление данных' : 'Обновить'}`}
           severity='warning'
-          onClick={() => y.refetch()}
-        /> */}
+          onClick={() => userQuery.refetch()}
+        />
       </div>
-      <DynamicTable />
+      <ErrorBoundary
+        errorComponent={({ error }) => (
+          <>Неудалось загрузить данные: {error.message}</>
+        )}
+      >
+        <DynamicTable />
+      </ErrorBoundary>
     </>
   )
 }
