@@ -1,14 +1,12 @@
-'use client'
-
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
 
 export default function Table() {
   const dataOptions = queryOptions({
-    queryKey: ['categories'],
+    queryKey: ['users'],
     queryFn: async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}categories`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API}users`)
 
       return response.json()
     },
