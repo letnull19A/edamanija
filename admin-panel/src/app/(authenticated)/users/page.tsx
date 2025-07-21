@@ -1,10 +1,11 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { Button } from 'primereact/button'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/navigation'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { useQuery } from '@tanstack/react-query'
+import { Errors } from '@/components/Errors'
 
 import style from './style.module.css'
 
@@ -13,15 +14,16 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
   ssr: false,
 })
 
-export default function Categories() {
+export default function Users() {
   const router = useRouter()
 
-  const y = useQuery({ queryKey: ['categories'] })
+  const userQuery = useQuery({ queryKey: ['users'] })
+
   return (
     <>
       <div className={style.toolPanel}>
         <Button
-          label='Добавить категорию'
+          label='Зарегистрировать пользователя'
           icon='pi pi-plus'
           onClick={() => router.push('categories/add')}
         />
@@ -31,17 +33,15 @@ export default function Categories() {
           severity='danger'
         />
         <Button
-          disabled={y.isFetching}
-          icon={`pi ${y.isFetching ? 'pi-spin' : ''} pi-sync`}
-          label={`${y.isFetching ? 'Обновление данных' : 'Обновить'}`}
+          disabled={userQuery.isFetching}
+          icon={`pi ${userQuery.isFetching ? 'pi-spin' : ''} pi-sync`}
+          label={`${userQuery.isFetching ? 'Обновление данных' : 'Обновить'}`}
           severity='warning'
-          onClick={() => y.refetch()}
+          onClick={() => userQuery.refetch()}
         />
       </div>
       <ErrorBoundary
-        errorComponent={({ error }) => (
-          <>Неудалось загрузить данные: {error.message}</>
-        )}
+        errorComponent={({ error }) => <Errors.FailedFatch error={error} />}
       >
         <DynamicTable />
       </ErrorBoundary>
