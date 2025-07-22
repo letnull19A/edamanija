@@ -74,4 +74,4 @@ export const RegistrationSchema = extendApi(
   },
 )
 
-export class RegistrationUser extends createZodDto(RegistrationSchema) {}
+export class RegistrationUserDto extends createZodDto(RegistrationSchema) {}
