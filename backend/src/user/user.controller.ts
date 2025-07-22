@@ -19,9 +19,6 @@ export class UserController {
   }
 
   @Post('registration')
-  @ApiBody({
-    type: RegistrationUserDto,
-  })
   public async regv1(@Body() data: RegistrationUserDto): Promise<void> {
     new Promise<void>((resolve) => setTimeout(() => resolve(), 4000))
     throw new BadRequestException()
