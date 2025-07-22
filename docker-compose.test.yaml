@@ -6,16 +6,16 @@ services:
     ports:
       - '5423:5423'
     volumes:
-      -  test_postgres-data:/var/lib/postgresql/data/
+      - test_postgres-data:/var/lib/postgresql/data/
       - './postgres/dataset:/docker-entrypoint-initdb.d'
     env_file:
       - ./postgres/.env.test
     networks:
       test_edamanija_network:
         ipv4_address: 67.89.1.4
-    
+
   api:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile.test
     ports:
