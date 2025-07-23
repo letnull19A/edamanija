@@ -10,7 +10,8 @@ import {
 import { RegistrationUserDto } from './dto/registration.dto'
 import { BadRequestException } from '@nestjs/common'
 import { UserService } from './user.service'
-import { EditUserDto } from './dto/edit.dto'
+import { UserEditDto } from './dto/edit.dto'
+import { User } from './user.entity'
 
 @Controller('user')
 export class UserController {
@@ -42,7 +43,10 @@ export class UserController {
 
   @Put(':id')
   @Version('1')
-  public async edit(@Param id, @Body data: EditUserDto): Promise<User | null> {
+  public async edit(
+    @Param() id: string,
+    @Body() data: UserEditDto,
+  ): Promise<User | null> {
     return null
   }
 }
