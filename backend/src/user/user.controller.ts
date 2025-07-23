@@ -1,7 +1,16 @@
-import { Body, Get, Param, Post, Version, Controller } from '@nestjs/common'
+import {
+  Body,
+  Put,
+  Get,
+  Param,
+  Post,
+  Version,
+  Controller,
+} from '@nestjs/common'
 import { RegistrationUserDto } from './dto/registration.dto'
 import { BadRequestException } from '@nestjs/common'
 import { UserService } from './user.service'
+import { EditUserDto } from './dto/edit.dto'
 
 @Controller('user')
 export class UserController {
@@ -29,5 +38,11 @@ export class UserController {
   public async regv1(@Body() data: RegistrationUserDto): Promise<void> {
     new Promise<void>((resolve) => setTimeout(() => resolve(), 4000))
     throw new BadRequestException()
+  }
+
+  @Put(':id')
+  @Version('1')
+  public async edit(@Param id, @Body data: EditUserDto): Promise<User | null> {
+    return null
   }
 }
