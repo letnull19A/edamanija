@@ -1,3 +1,5 @@
-// import { RegistrationUser } from './registration.dto'
+import { RegistrationUser } from './registration.dto'
 
-// export type UserEdit = Partial<Omit<RegistrationUser, 'confirmPassword'>>
+export type UserEditDto = Partial<
+  Omit<RegistrationUser, 'confirmPassword' | 'id'>
+>
