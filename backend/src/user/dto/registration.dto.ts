@@ -2,6 +2,8 @@ import { z } from 'zod'
 import { createZodDto } from '@anatine/zod-nestjs'
 import { extendApi } from '@anatine/zod-openapi'
 
+export type Gender = 'MALE' | 'FEMALE' | 'NOBODY'
+
 export const RegistrationSchema = extendApi(
   z
     .object({
@@ -54,7 +56,7 @@ export const RegistrationSchema = extendApi(
           message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
         }),
       phone: z.string(),
-      gender: z.enum(['MALE', 'FEMALE', 'NOBODY']),
+      gender: z.string().nonempty(),
       password: z
         .string()
         .nonempty('field is empty')

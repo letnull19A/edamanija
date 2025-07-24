@@ -6,6 +6,9 @@
         "pkief.material-icon-theme",
         "kainnhantumbo.maron-themes",
         "mhutchie.git-graph",
-        "wix.vscode-import-cost"
+        "wix.vscode-import-cost",
+        "orta.vscode-jest",
+        "visualstudioexptteam.vscodeintellicode",
+        "ms-playwright.playwright"
     ]
 }

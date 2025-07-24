@@ -6,9 +6,11 @@ import {
   Post,
   Version,
   Controller,
+  BadRequestException,
 } from '@nestjs/common'
 import { RegistrationUserDto } from './dto/registration.dto'
-import { BadRequestException } from '@nestjs/common'
+import { UserEditDto } from './dto/edit.dto'
+import { User } from './user.entity'
 import { UserService } from './user.service'
 import { UserEditDto } from './dto/edit.dto'
 import { User } from './user.entity'
