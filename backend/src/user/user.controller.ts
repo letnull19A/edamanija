@@ -12,6 +12,8 @@ import { RegistrationUserDto } from './dto/registration.dto'
 import { UserEditDto } from './dto/edit.dto'
 import { User } from './user.entity'
 import { UserService } from './user.service'
+import { UserEditDto } from './dto/edit.dto'
+import { User } from './user.entity'
 
 @Controller('user')
 export class UserController {
