@@ -1,0 +1,3 @@
+[submodule "web2bizz-translator"]
+	path = libs/web2bizz-translator
+	url = https://github.com/Web2Bizz/web2bizz-translator.git

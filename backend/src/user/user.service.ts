@@ -31,6 +31,7 @@ export class UserService {
 
   public async findById(data: FindByIdDto): Promise<User | null> {
     const parsedData = await FindByIdDto.zodSchema.parseAsync(data)
+
     const result = await this.userRepository.findOneBy(parsedData)
 
     if (result === null) return null
