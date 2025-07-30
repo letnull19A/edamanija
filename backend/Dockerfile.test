@@ -3,8 +3,6 @@ FROM node:21-alpine3.18 AS build
 WORKDIR /app
 
 COPY package*.json .
-RUN npm install --legacy-peer-deps
-
 COPY envs/.env.test ./.env
 COPY nest-cli.json .
 COPY tsconfig.json .
@@ -13,8 +11,9 @@ COPY environment.d.ts .
 COPY src src
 COPY test test
 
-RUN npm run build:test
-RUN npm cache clean --force && \
+RUN npm install --legacy-peer-deps && \
+    npm run build:test && \
+    npm cache clean --force && \
     rm -rf /root/.npm && \
     rm tsconfig*.json && \
     rm environment.d.ts && \
@@ -38,8 +37,8 @@ WORKDIR /app/dist
 COPY --from=production-installation ./app/dist .
 
 WORKDIR /app
+COPY ./envs/.env.test-docker .env
 COPY --from=production-installation ./app/node_modules node_modules
 COPY --from=production-installation ./app/package.json package.json
 
 ENTRYPOINT ["npm", "run", "test:pre-release"]
-# ENTRYPOINT tail -f /dev/null

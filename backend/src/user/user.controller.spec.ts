@@ -13,7 +13,7 @@ describe('UserController', () => {
       imports: [
         ConfigModule.forRoot({
           isGlobal: true,
-          envFilePath: ['.env.test'],
+          envFilePath: ['.env'],
         }),
         DatabaseModule,
       ],

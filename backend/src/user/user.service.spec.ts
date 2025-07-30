@@ -1,9 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
-import * as failRegistrationData from './data/failedRegistration.json'
 import { DatabaseModule } from './../database/database.module'
 import { userProviders } from './user.providers'
 import { ConfigModule } from '@nestjs/config'
+import { readFileSync } from 'fs'
+
+const failRegistrationData = JSON.parse(
+  readFileSync(
+    [__dirname, 'data', 'failedRegistration.json'].join('/'),
+    'utf-8',
+  ),
+)
+
+describe('mock data defined', () => {
+  it('should be defined', () => {
+    expect(failRegistrationData).toBeDefined()
+  })
+})
 
 describe('UserService', () => {
   let service: UserService
@@ -13,7 +26,7 @@ describe('UserService', () => {
       imports: [
         ConfigModule.forRoot({
           isGlobal: true,
-          envFilePath: ['.env.test'],
+          envFilePath: ['.env'],
         }),
         DatabaseModule,
       ],
