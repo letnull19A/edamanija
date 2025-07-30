@@ -8,7 +8,7 @@ import { UserModule } from './../user/user.module'
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.development.local', '.env.development'],
+      envFilePath: ['.env'],
     }),
     UserModule,
   ],

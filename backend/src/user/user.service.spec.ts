@@ -3,13 +3,20 @@ import { UserService } from './user.service'
 import * as failRegistrationData from './data/failedRegistration.json'
 import { DatabaseModule } from './../database/database.module'
 import { userProviders } from './user.providers'
+import { ConfigModule } from '@nestjs/config'
 
 describe('UserService', () => {
   let service: UserService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [DatabaseModule],
+      imports: [
+        ConfigModule.forRoot({
+          isGlobal: true,
+          envFilePath: ['.env.test'],
+        }),
+        DatabaseModule,
+      ],
       providers: [...userProviders, UserService],
     }).compile()
 
