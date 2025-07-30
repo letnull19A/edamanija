@@ -9,6 +9,12 @@ import {
   BadRequestException,
 } from '@nestjs/common'
 import { RegistrationUserDto } from './dto/registration.dto'
+<<<<<<< HEAD
+=======
+import { UserEditDto } from './dto/edit.dto'
+import { User } from './user.entity'
+import { UserService } from './user.service'
+>>>>>>> e3396936936dcf34d2122ed145c8f1be8e02707b
 import { UserEditDto } from './dto/edit.dto'
 import { User } from './user.entity'
 import { UserService } from './user.service'
