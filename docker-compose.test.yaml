@@ -1,10 +1,11 @@
+version: '3'
 name: 'edamanija_test'
 
 services:
   postgres:
     image: postgres:latest
     ports:
-      - '5423:5423'
+      - '5423:5432'
     volumes:
       - test_postgres-data:/var/lib/postgresql/data/
       - './postgres/dataset:/docker-entrypoint-initdb.d'

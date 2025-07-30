@@ -1,14 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
-
 import * as failRegistrationData from './data/failedRegistration.json'
+import { DatabaseModule } from './../database/database.module'
+import { userProviders } from './user.providers'
 
 describe('UserService', () => {
   let service: UserService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UserService],
+      imports: [DatabaseModule],
+      providers: [...userProviders, UserService],
     }).compile()
 
     service = module.get<UserService>(UserService)
