@@ -3,8 +3,9 @@ import { User } from './user.entity'
 // import { UserEdit } from './dto/edit.dto'
 import { RegistrationSchema, RegistrationUserDto } from './dto/registration.dto'
 import { Repository } from 'typeorm/repository/Repository'
-import { FindByLoginDto } from './dto/find-login.dto'
+import { FindByLoginDto, FindByLoginSchema } from './dto/find-login.dto'
 import { FindByIdDto } from './dto/find-id.dto'
+import { createHash } from 'node:crypto'
 
 @Injectable()
 export class UserService {
@@ -20,13 +21,17 @@ export class UserService {
    * @async
    */
   public async findByLogin(data: FindByLoginDto): Promise<User | null> {
-    const result = await this.userRepository.findOneBy({
-      login: data.login,
-    })
+    try {
+      const validData = await FindByLoginSchema.parseAsync(data)
 
-    if (result === null) return null
+      const result = await this.userRepository.findOneBy({
+        login: validData.login,
+      })
 
-    return result
+      return result === null ? null : result
+    } catch (e) {
+      throw Error(e)
+    }
   }
 
   public async findById(data: FindByIdDto): Promise<User | null> {
@@ -52,9 +57,29 @@ export class UserService {
   // }
 
   public async registration(data: RegistrationUserDto): Promise<object | null> {
-    const validData = await RegistrationSchema.parseAsync(data)
+    try {
+      const validData = await RegistrationSchema.parseAsync(data)
+      const loginIsUsed = await this.findByLogin({ login: validData.login })
 
-    return validData
+      if (loginIsUsed !== null) throw Error('login or email or phone is used')
+
+      const passwordHash = createHash('sha-256')
+
+      await this.userRepository.save({
+        login: validData.login,
+        password: passwordHash.update(validData.password).digest('base64'),
+        email: validData.email,
+        gender: validData.gender,
+        name: validData.name,
+        surname: validData.surname,
+        fatherName: validData.fatherName,
+        phone: validData.phone,
+      })
+
+      return validData
+    } catch (e) {
+      throw Error(e)
+    }
   }
 
   public async remove(id: string): Promise<void> {}

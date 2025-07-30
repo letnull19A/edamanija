@@ -7,8 +7,6 @@ import {
   //   OneToMany,
 } from 'typeorm'
 
-export type Gender = 'MALE' | 'FEMALE' | 'NOBODY'
-
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -24,7 +22,7 @@ export class User extends BaseEntity {
   fatherName?: string
 
   @Column({ default: 'NOBODY' })
-  gender: Gender
+  gender: string
 
   @Column({ default: '' })
   email: string

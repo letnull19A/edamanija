@@ -14,7 +14,7 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest --detectOpenHandles",
-    "test:pre-release": "jest --rootDir dist --config dist/test/jest-pre-release.json --watchAll --detectOpenHandles",
+    "test:pre-release": "jest --rootDir dist --config dist/test/jest-pre-release.json --detectOpenHandles",
     "test:clear-cache": "jest --clearCache",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",

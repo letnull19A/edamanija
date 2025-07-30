@@ -1,0 +1,35 @@
+[
+  {
+    "login": "anna_ivan_542",
+    "name": "Анна",
+    "surname": "Иванова",
+    "fatherName": "Сергеевна",
+    "gender": "FEMALE",
+    "email": "ivanova.73@example.com",
+    "phone": "+79527684321",
+    "password": "kL#45nD!2s",
+    "confirmPassword": "kL#45nD!2s"
+  },
+  {
+    "login": "ivan_petr_127",
+    "name": "Иван",
+    "surname": "Петров",
+    "fatherName": "Дмитриевич",
+    "gender": "MALE",
+    "email": "petrov.89@example.com",
+    "phone": "+79031234567",
+    "password": "p@ssW0rd!X3",
+    "confirmPassword": "p@ssW0rd!X3"
+  },
+  {
+    "login": "elena_sido_842",
+    "name": "Елена",
+    "surname": "Сидорова",
+    "fatherName": "Алексеевна",
+    "gender": "FEMALE",
+    "email": "sidorova.15@example.com",
+    "phone": "+79987654321",
+    "password": "Qwerty$#678",
+    "confirmPassword": "Qwerty$#678"
+  }
+]

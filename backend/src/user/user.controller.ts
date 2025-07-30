@@ -31,7 +31,7 @@ export class UserController {
 
       return result
     } catch (e) {
-      throw new BadRequestException(e.issues)
+      throw new BadRequestException(e)
     }
   }
 
