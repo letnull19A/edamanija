@@ -1,3 +1,7 @@
+<a href='./readme.md'>На главную</a>
+
+# запуск приложения
+
 # <img src='./static/postgresql-svgrepo-com.svg' width='25'/> <span style='position: relative; top: -5px;'>настраиваем postgres</span>
 
 в папке postgres сдалть папку data если отсутствует

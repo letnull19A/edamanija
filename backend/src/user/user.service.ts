@@ -35,13 +35,15 @@ export class UserService {
   }
 
   public async findById(data: FindByIdDto): Promise<User | null> {
-    const parsedData = await FindByIdDto.zodSchema.parseAsync(data)
+    try {
+      const parsedData = await FindByIdDto.zodSchema.parseAsync(data)
 
-    const result = await this.userRepository.findOneBy(parsedData)
+      const result = await this.userRepository.findOneBy(parsedData)
 
-    if (result === null) return null
-
-    return result
+      return result
+    } catch (e) {
+      throw Error(e)
+    }
   }
 
   public async findByEmail(data: { email: string }): Promise<User | null> {
