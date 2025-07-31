@@ -33,16 +33,26 @@ export class UserService {
     }
   }
 
+  /**
+   * @param {FindByIdDto} data - форма с id пользователя
+   * @description поиск пользователя по id
+   * @returns User | null
+   * @async
+   */
   public async findById(data: FindByIdDto): Promise<User | null> {
     try {
       const parsedData = await FindByIdDto.zodSchema.parseAsync(data)
 
-      const result = await this.userRepository.findOneBy(parsedData)
+      const result = await this.userRepository.findOneBy({ id: parsedData.id })
 
       return result
     } catch (e) {
       throw Error(e)
     }
+  }
+
+  public async getAll(): Promise<Array<User>> {
+    return this.userRepository.find()
   }
 
   public async findByEmail(data: { email: string }): Promise<User | null> {
@@ -57,7 +67,7 @@ export class UserService {
   //   return null
   // }
 
-  public async registration(data: RegistrationUserDto): Promise<object | null> {
+  public async registration(data: RegistrationUserDto): Promise<User | null> {
     try {
       const validData = await RegistrationSchema.parseAsync(data)
       const loginIsUsed = await this.findByLogin({ login: validData.login })
@@ -66,7 +76,7 @@ export class UserService {
 
       const passwordHash = createHash('sha-256')
 
-      await this.userRepository.save({
+      const result = await this.userRepository.save({
         login: validData.login,
         password: passwordHash.update(validData.password).digest('base64'),
         email: validData.email,
@@ -77,7 +87,7 @@ export class UserService {
         phone: validData.phone,
       })
 
-      return validData
+      return result
     } catch (e) {
       throw Error(e)
     }

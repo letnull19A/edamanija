@@ -14,6 +14,7 @@ const readMockData = (fileName: string): Array<any> => {
 const failRegistrationData = readMockData('failedRegistration.json')
 const formsData = readMockData('forms.json')
 const findByLoginData = readMockData('findByLogin.json')
+const findById = readMockData('findById.json')
 
 describe('mock data defined', () => {
   it('should be defined', () => {
@@ -45,6 +46,12 @@ describe('UserService', () => {
     })
   })
 
+  describe.each(findById)('findById', (form) => {
+    it(`correct works ${form.input.id.substring(0, 5)}`, async () => {
+      expect(service.findById({ id: form.input.id })).resolves.not.toBeNull()
+    })
+  })
+
   describe.each(failRegistrationData)('registration', (form) => {
     it('all failed validation', async () => {
       try {
@@ -56,8 +63,10 @@ describe('UserService', () => {
   })
 
   describe.each(formsData)('sucessfully added 8 records', (form) => {
-    it('all fields valid', async () => {
-      expect(service.registration(form)).resolves.not.toThrow()
+    it('all fields is valid', () => {
+      const user = service.registration(form)
+
+      expect(user).resolves.not.toThrow()
     })
   })
 
