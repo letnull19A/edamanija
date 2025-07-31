@@ -21,7 +21,7 @@ export const RegistrationSchema = extendApi(
           message: 'name should be start with upper-case latter',
         })
         .nonempty('field is empty')
-        .min(1, { message: 'field length less than 1 latters' })
+        .min(2, { message: 'field length less than 2 latters' })
         .max(12, { message: 'field should be less than 12 latters' })
         .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
           message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',

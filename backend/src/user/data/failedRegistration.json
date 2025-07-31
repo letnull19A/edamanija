@@ -137,7 +137,7 @@
       },
       {
         "code": "too_small",
-        "message": "field length less than 1 latters",
+        "message": "field length less than 2 latters",
         "path": ["name"]
       }
     ]
@@ -157,10 +157,10 @@
     "errors": [
       {
         "code": "too_small",
-        "minimum": 1,
+        "minimum": 2,
         "inclusive": true,
         "path": ["name"],
-        "message": "field length less than 8 latters"
+        "message": "field length less than 2 latters"
       }
     ]
   },

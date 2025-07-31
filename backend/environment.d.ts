@@ -1,6 +1,6 @@
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends PostgresEnv {
+    interface ProcessEnv extends PostgresEnv, SecretEnv {
       APP_PORT: number
     }
 
@@ -10,6 +10,10 @@ declare global {
       PG_USER: string
       PG_PASSWORD: string
       PG_DATABASE: string
+    }
+
+    interface SecretEnv {
+      SECRET_PASSWORD_SALT: stiring
     }
   }
 }
