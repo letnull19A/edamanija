@@ -1,21 +1,22 @@
+version: '3'
 name: 'edamanija_test'
 
 services:
   postgres:
     image: postgres:latest
     ports:
-      - '5423:5423'
+      - '5423:5432'
     volumes:
-      -  test_postgres-data:/var/lib/postgresql/data/
       - './postgres/dataset:/docker-entrypoint-initdb.d'
+    restart: always
     env_file:
       - ./postgres/.env.test
     networks:
       test_edamanija_network:
         ipv4_address: 67.89.1.4
-    
+
   api:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile.test
     ports:
@@ -25,9 +26,6 @@ services:
     networks:
       test_edamanija_network:
         ipv4_address: 67.89.2.1
-
-volumes:
-  test_postgres-data:
 
 networks:
   test_edamanija_network:

@@ -2,17 +2,17 @@ FROM node:21-alpine3.18 AS build
 
 WORKDIR /app
 
-COPY package.json .
-RUN npm install --legacy-peer-deps
-
+COPY package*.json .
 COPY envs/.env.test ./.env
 COPY nest-cli.json .
 COPY tsconfig.json .
 COPY tsconfig.test.json .
 COPY environment.d.ts .
-COPY src .
+COPY src src
+COPY test test
 
-RUN npm run build:test && \
+RUN npm install --legacy-peer-deps && \
+    npm run build:test && \
     npm cache clean --force && \
     rm -rf /root/.npm && \
     rm tsconfig*.json && \
@@ -24,8 +24,21 @@ FROM node:21-alpine3.18 AS production-installation
 
 WORKDIR /app
 
-COPY --from=build ./app .
-RUN npm install --production --legacy-peer-deps && \
-    npm install jest --legacy-peer-deps
+COPY --from=build ./app/package.json package.json
+RUN npm install --omit=dev --legacy-peer-deps && \
+    npm install jest @nestjs/testing supertest --legacy-peer-deps
 
-ENTRYPOINT ["npm", "run", "test"]
+WORKDIR /app/dist
+COPY --from=build ./app/dist .
+
+FROM node:21-alpine3.18
+
+WORKDIR /app/dist
+COPY --from=production-installation ./app/dist .
+
+WORKDIR /app
+COPY ./envs/.env.test-docker .env
+COPY --from=production-installation ./app/node_modules node_modules
+COPY --from=production-installation ./app/package.json package.json
+
+ENTRYPOINT ["npm", "run", "test:pre-release"]

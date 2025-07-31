@@ -2,6 +2,8 @@ import { z } from 'zod'
 import { createZodDto } from '@anatine/zod-nestjs'
 import { extendApi } from '@anatine/zod-openapi'
 
+export type Gender = 'MALE' | 'FEMALE' | 'NOBODY'
+
 export const RegistrationSchema = extendApi(
   z
     .object({
@@ -19,7 +21,7 @@ export const RegistrationSchema = extendApi(
           message: 'name should be start with upper-case latter',
         })
         .nonempty('field is empty')
-        .min(1, { message: 'field length less than 1 latters' })
+        .min(2, { message: 'field length less than 2 latters' })
         .max(12, { message: 'field should be less than 12 latters' })
         .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
           message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -54,7 +56,7 @@ export const RegistrationSchema = extendApi(
           message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
         }),
       phone: z.string(),
-      gender: z.enum(['MALE', 'FEMALE', 'NOBODY']),
+      gender: z.string().nonempty(),
       password: z
         .string()
         .nonempty('field is empty')

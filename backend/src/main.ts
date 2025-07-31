@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { NestFactory } from '@nestjs/core'
-import { VersioningType } from '@nestjs/common'
+import { VersioningType } from '@nestjs/common/enums'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app/app.module'
 
@@ -27,43 +27,4 @@ async function bootstrap() {
   await app.listen(process.env.APP_PORT)
 }
 
-const welkomen = () => {
-  console.log(
-    '\x1b[30m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[30m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[30m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[30m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[31m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[31m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[31m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[31m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[33m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[33m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[33m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-  console.log(
-    '\x1b[33m ██████████████████████████████████████████████████████████████████ \x1b[0m',
-  )
-}
-// welkomen()
 bootstrap()

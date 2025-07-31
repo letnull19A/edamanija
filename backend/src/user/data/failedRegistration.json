@@ -13,7 +13,6 @@
     },
     "errors": [
       {
-        "origin": "string",
         "code": "too_small",
         "minimum": 1,
         "inclusive": true,
@@ -21,7 +20,6 @@
         "message": "field is empty"
       },
       {
-        "origin": "string",
         "code": "too_small",
         "minimum": 8,
         "inclusive": true,
@@ -44,7 +42,6 @@
     },
     "errors": [
       {
-        "origin": "string",
         "code": "too_small",
         "minimum": 8,
         "inclusive": true,
@@ -107,7 +104,7 @@
     },
     "errors": [
       {
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["name"],
         "message": "name should be start with upper-case latter"
       }
@@ -127,13 +124,11 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["name"],
         "message": "name should be start with upper-case latter"
       },
       {
-        "origin": "string",
         "code": "too_small",
         "minimum": 1,
         "inclusive": true,
@@ -142,7 +137,7 @@
       },
       {
         "code": "too_small",
-        "message": "field length less than 1 latters",
+        "message": "field length less than 2 latters",
         "path": ["name"]
       }
     ]
@@ -161,12 +156,11 @@
     },
     "errors": [
       {
-        "origin": "string",
         "code": "too_small",
-        "minimum": 1,
+        "minimum": 2,
         "inclusive": true,
         "path": ["name"],
-        "message": "field length less than 8 latters"
+        "message": "field length less than 2 latters"
       }
     ]
   },
@@ -184,7 +178,6 @@
     },
     "errors": [
       {
-        "origin": "string",
         "code": "too_big",
         "inclusive": true,
         "path": ["name"],
@@ -226,8 +219,7 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["name"],
         "message": "name should be start with upper-case latter"
       },
@@ -252,13 +244,11 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["surname"],
         "message": "surname should be start with upper-case latter"
       },
       {
-        "origin": "string",
         "code": "too_small",
         "minimum": 1,
         "inclusive": true,
@@ -287,9 +277,7 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
-        "format": "regex",
+        "code": "invalid_string",
         "path": ["surname"],
         "message": "surname should be start with upper-case latter"
       }
@@ -309,8 +297,7 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["surname"],
         "message": "surname should be start with upper-case latter"
       }
@@ -330,7 +317,6 @@
     },
     "errors": [
       {
-        "origin": "string",
         "code": "too_big",
         "inclusive": true,
         "path": ["surname"],
@@ -372,8 +358,7 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["surname"],
         "message": "surname should be start with upper-case latter"
       },
@@ -398,8 +383,7 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["fatherName"],
         "message": "fatherName should be start with upper-case latter"
       }
@@ -419,12 +403,9 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
-        "format": "regex",
+        "code": "invalid_string",
         "path": ["fatherName"],
-        "message": "fatherName should be start with upper-case latter",
-        "pattern": "/^[А-ЯA-ZЁ]/"
+        "message": "fatherName should be start with upper-case latter"
       }
     ]
   },
@@ -442,7 +423,6 @@
     },
     "errors": [
       {
-        "origin": "string",
         "maximum": 20,
         "inclusive": true,
         "code": "too_big",
@@ -465,11 +445,9 @@
     },
     "errors": [
       {
-        "origin": "string",
-        "code": "invalid_format",
+        "code": "invalid_string",
         "path": ["fatherName"],
-        "message": "fatherName should be start with upper-case latter",
-        "pattern": "/^[А-ЯA-ZЁ]/"
+        "message": "fatherName should be start with upper-case latter"
       },
       {
         "code": "custom",
