@@ -5,16 +5,12 @@ import { userProviders } from './user.providers'
 import { ConfigModule } from '@nestjs/config'
 import { readFileSync } from 'fs'
 
-const failRegistrationData = JSON.parse(
-  readFileSync(
-    [__dirname, 'data', 'failedRegistration.json'].join('/'),
-    'utf-8',
-  ),
-)
+const readMockData = (fileName: string): any => {
+  JSON.parse(readFileSync([__dirname, 'data', fileName].join('/'), 'utf-8'))
+}
 
-const formsData = JSON.parse(
-  readFileSync([__dirname, 'data', 'forms.json'].join('/'), 'utf-8'),
-)
+const failRegistrationData = readMockData('failedRegistration.json')
+const formsData = readMockData('forms.json')
 
 describe('mock data defined', () => {
   it('should be defined', () => {
