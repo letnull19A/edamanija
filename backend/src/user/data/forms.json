@@ -31,5 +31,60 @@
     "phone": "+79987654321",
     "password": "Qwerty$#678",
     "confirmPassword": "Qwerty$#678"
+  },
+  {
+    "login": "alex_smi_542",
+    "name": "Алексей",
+    "surname": "Смирнов",
+    "fatherName": "Игоревич",
+    "gender": "MALE",
+    "email": "smirnov.42@example.com",
+    "phone": "+79161234567",
+    "password": "xK78!nLp2",
+    "confirmPassword": "xK78!nLp2"
+  },
+  {
+    "login": "olga_iva_123",
+    "name": "Ольга",
+    "surname": "Иванова",
+    "fatherName": "Сергеевна",
+    "gender": "FEMALE",
+    "email": "ivanova.87@example.com",
+    "phone": "+79038765432",
+    "password": "Qwerty$#99",
+    "confirmPassword": "Qwerty$#99"
+  },
+  {
+    "login": "dmit_pet_876",
+    "name": "Дмитрий",
+    "surname": "Петров",
+    "fatherName": "Андреевич",
+    "gender": "MALE",
+    "email": "petrov.33@example.com",
+    "phone": "+79216549870",
+    "password": "Dm!Tr098",
+    "confirmPassword": "Dm!Tr098"
+  },
+  {
+    "login": "anna_kuz_321",
+    "name": "Анна",
+    "surname": "Кузнецова",
+    "fatherName": "Дмитриевна",
+    "gender": "FEMALE",
+    "email": "kuznetsova.11@example.com",
+    "phone": "+79991237845",
+    "password": "AnnaKuz_2024",
+    "confirmPassword": "AnnaKuz_2024"
+  },
+  {
+    "login": "sergey_mor_654",
+    "name": "Сергей",
+    "surname": "Морозов",
+    "fatherName": "Владимирович",
+    "gender": "MALE",
+    "email": "morozov.22@example.com",
+    "phone": "+79543218907",
+    "password": "Moroz!2024",
+    "confirmPassword": "Moroz!2024"
   }
 ]

@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { User } from './user.entity'
-// import { UserEdit } from './dto/edit.dto'
 import { RegistrationSchema, RegistrationUserDto } from './dto/registration.dto'
 import { Repository } from 'typeorm/repository/Repository'
 import { FindByLoginDto, FindByLoginSchema } from './dto/find-login.dto'
@@ -28,7 +27,7 @@ export class UserService {
         login: validData.login,
       })
 
-      return result === null ? null : result
+      return result
     } catch (e) {
       throw Error(e)
     }

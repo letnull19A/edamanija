@@ -5,12 +5,15 @@ import { userProviders } from './user.providers'
 import { ConfigModule } from '@nestjs/config'
 import { readFileSync } from 'fs'
 
-const readMockData = (fileName: string): any => {
-  JSON.parse(readFileSync([__dirname, 'data', fileName].join('/'), 'utf-8'))
+const readMockData = (fileName: string): Array<any> => {
+  return JSON.parse(
+    readFileSync([__dirname, 'data', fileName].join('/'), 'utf-8'),
+  )
 }
 
 const failRegistrationData = readMockData('failedRegistration.json')
 const formsData = readMockData('forms.json')
+const findByLoginData = readMockData('findByLogin.json')
 
 describe('mock data defined', () => {
   it('should be defined', () => {
@@ -52,13 +55,7 @@ describe('UserService', () => {
     })
   })
 
-  describe.each(formsData)('findByLogin', (form) => {
-    it('logins not exists', async () => {
-      expect(await service.findByLogin(form)).toBeNull()
-    })
-  })
-
-  describe.each(formsData)('added 3 records', (form) => {
+  describe.each(formsData)('sucessfully added 8 records', (form) => {
     it('all fields valid', async () => {
       expect(service.registration(form)).resolves.not.toThrow()
     })
@@ -77,6 +74,14 @@ describe('UserService', () => {
     it('password is not equal password hash', async () => {
       expect((await service.findByLogin(form)).password).not.toEqual(
         form.password,
+      )
+    })
+  })
+
+  describe.each(findByLoginData)('findByLogin', (form) => {
+    it(`correct works ${form.data.login} isExist: ${form.isExist}`, async () => {
+      expect((await service.findByLogin(form.data)) !== null).toStrictEqual(
+        form.isExist,
       )
     })
   })
