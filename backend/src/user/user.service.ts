@@ -52,20 +52,8 @@ export class UserService {
   }
 
   public async getAll(): Promise<Array<User>> {
-    return this.userRepository.find()
+    return this.userRepository.query('SELECT * FROM public.user')
   }
-
-  public async findByEmail(data: { email: string }): Promise<User | null> {
-    return null
-  }
-
-  public async findByPhone(data: { phone: string }): Promise<User | null> {
-    return null
-  }
-
-  // public async edit(id: string, data: UserEdit): Promise<User | null> {
-  //   return null
-  // }
 
   public async registration(data: RegistrationUserDto): Promise<User | null> {
     try {
@@ -92,6 +80,4 @@ export class UserService {
       throw Error(e)
     }
   }
-
-  public async remove(id: string): Promise<void> {}
 }
