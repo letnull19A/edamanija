@@ -18,9 +18,22 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Version('1')
-  @Get('')
-  public async getAllV1(): Promise<Array<any>> {
-    return []
+  @Get()
+  public async getAllV1(): Promise<Array<User>> {
+    return await this.userService.getAll()
+  }
+
+  @Version('2')
+  @Get()
+  public async getAllV2(): Promise<Array<any>> {
+    return (await this.userService.getAll()).map((user) => ({
+      name: user.name,
+      surname: user.surname,
+      fatherName: user.fatherName,
+      email: user.email,
+      phone: user.phone,
+      login: user.login,
+    }))
   }
 
   @Version('1')
