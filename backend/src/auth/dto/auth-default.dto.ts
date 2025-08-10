@@ -12,12 +12,11 @@ export const LoginByDefaultSchema = extendApi(
       .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
         message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
       }),
-     password: z
+    password: z
       .string()
-       .nonempty('field is empty')
-       .min(8, { message: 'field length less than 8 latters' })
-       .max(64, { message: 'field should be less than 64 latters' }),
- 
+      .nonempty('field is empty')
+      .min(8, { message: 'field length less than 8 latters' })
+      .max(64, { message: 'field should be less than 64 latters' }),
   }),
 )
 

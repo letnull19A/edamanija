@@ -6,6 +6,7 @@ import {
   Post,
   Version,
   Controller,
+  Logger,
   BadRequestException,
 } from '@nestjs/common'
 import { RegistrationUserDto } from './dto/registration.dto'
@@ -15,7 +16,12 @@ import { UserService } from './user.service'
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+
+  private readonly logger: Logger
+
+  constructor(private readonly userService: UserService) {
+    this.logger = new Logger()
+  }
 
   @Version('1')
   @Get()
@@ -49,9 +55,15 @@ export class UserController {
   }
 
   @Post('registration')
-  public async regv1(@Body() data: RegistrationUserDto): Promise<void> {
-    new Promise<void>((resolve) => setTimeout(() => resolve(), 4000))
-    throw new BadRequestException()
+  public async regv1(@Body() data: RegistrationUserDto): 
+Promise<void> {
+
+    this.logger.verbose('started registration')
+
+    const user = await this.userService.registration(data)
+
+    if (user == null)
+      throw new BadRequestException()
   }
 
   @Put(':id')

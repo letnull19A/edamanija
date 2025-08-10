@@ -1,17 +1,31 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { 
+  Inject, 
+  Injectable,
+  Logger
+} from '@nestjs/common'
 import { User } from './user.entity'
-import { RegistrationSchema, RegistrationUserDto } from './dto/registration.dto'
+import { 
+  RegistrationSchema, 
+  RegistrationUserDto 
+} from './dto/registration.dto'
 import { Repository } from 'typeorm/repository/Repository'
-import { FindByLoginDto, FindByLoginSchema } from './dto/find-login.dto'
+import { 
+  FindByLoginDto, 
+  FindByLoginSchema } from './dto/find-login.dto'
 import { FindByIdDto } from './dto/find-id.dto'
 import { createHash } from 'node:crypto'
 
 @Injectable()
 export class UserService {
+
+  private readonly logger: Logger
+
   constructor(
     @Inject('USER_REPOSITORY')
     private readonly userRepository: Repository<User>,
-  ) {}
+  ) {
+    this.logger = new Logger()
+  }
 
   /**
    * @param {FindByLoginDto} data - форма с логином пользователя
@@ -19,18 +33,21 @@ export class UserService {
    * @returns User | null
    * @async
    */
-  public async findByLogin(data: FindByLoginDto): Promise<User | null> {
-    try {
-      const validData = await FindByLoginSchema.parseAsync(data)
+  public async findByLogin(data: FindByLoginDto): 
+Promise<User | null> {
 
-      const result = await this.userRepository.findOneBy({
-        login: validData.login,
-      })
+    this.logger.verbose('finding user by login')
 
-      return result
-    } catch (e) {
-      throw Error(e)
-    }
+    const validData = await FindByLoginSchema.parseAsync(data)
+
+    const result = await this.userRepository.findOneBy({
+      login: validData.login,
+    })
+
+    this.logger.verbose(result != null 
+      ? 'login has been finded' : 'login not found')
+
+    return result
   }
 
   /**
@@ -55,18 +72,24 @@ export class UserService {
     return this.userRepository.query('SELECT * FROM public.user')
   }
 
-  public async registration(data: RegistrationUserDto): Promise<User | null> {
+  public async registration(data: RegistrationUserDto): 
+Promise<User | null> {
     try {
       const validData = await RegistrationSchema.parseAsync(data)
-      const loginIsUsed = await this.findByLogin({ login: validData.login })
+      const loginIsUsed = await this.findByLogin({ 
+          login: validData.login 
+      })
 
-      if (loginIsUsed !== null) throw Error('login or email or phone is used')
+      if (loginIsUsed !== null)
+        throw Error('login or email or phone is used')
 
       const passwordHash = createHash('sha-256')
+        .update(validData.password)
+        .digest('base64')
 
       const result = await this.userRepository.save({
         login: validData.login,
-        password: passwordHash.update(validData.password).digest('base64'),
+        password: passwordHash,
         email: validData.email,
         gender: validData.gender,
         name: validData.name,
