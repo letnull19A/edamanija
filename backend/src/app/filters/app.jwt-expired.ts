@@ -5,30 +5,30 @@ import {
   Logger,
 } from '@nestjs/common'
 import { Request, Response } from 'express'
-import { ZodError } from 'zod'
+import { TokenExpiredError } from 'jsonwebtoken'
 
-@Catch(ZodError)
-export class ValidationExceptionFilter
+@Catch(TokenExpiredError)
+export class JWTExpiredExceptionFilter
   implements ExceptionFilter
 {
   private readonly logger: Logger
 
   constructor() {
-    this.logger = new Logger()
+    this.logger = new Logger(JWTExpiredExceptionFilter.name)
   }
 
-  catch(exception: ZodError, host: ArgumentsHost) {
+  catch(exception: TokenExpiredError, host: ArgumentsHost) {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
     const request = ctx.getRequest<Request>()
 
-    this.logger.error('validation error')
+    this.logger.error('jwt is expire, need re-login')
 
-    response.status(400).json({
-      statusCode: 400,
+    response.status(401).json({
+      statusCode: 401,
       timestamp: new Date().toISOString(),
       path: request.url,
-      errors: exception.issues,
+      errors: 'your session is expired, re-login please',
     })
   }
 }
