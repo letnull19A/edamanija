@@ -7,7 +7,7 @@ import {
 } from '@nestjs/swagger'
 import { AppModule } from './app/app.module'
 import { HttpExceptionFilter } from './app/filters/app.http-exception'
-import { JWTExpiredExceptionFilter} from './app/filters/app.jwt-expired'
+import { JWTExpiredExceptionFilter } from './app/filters/app.jwt-expired'
 import { ValidationExceptionFilter } from './app/filters/app.validation-exception'
 
 async function bootstrap() {
