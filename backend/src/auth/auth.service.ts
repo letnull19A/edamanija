@@ -46,7 +46,7 @@ export class AuthService {
       {
         expiresIn: ACCESS_EXPIRES_IN,
         algorithm: ACCESS_ALGORITHM,
-        issuer: ACCESS_ISSUER
+        issuer: ACCESS_ISSUER,
       },
     )
 
@@ -77,7 +77,7 @@ export class AuthService {
       {
         expiresIn: REFRESH_EXPIRES_IN,
         algorithm: REFRESH_ALGORITHM,
-        issuer: REFRESH_ISSUER
+        issuer: REFRESH_ISSUER,
       },
     )
 
@@ -87,7 +87,8 @@ export class AuthService {
   public async generateJwtPair(
     data: any,
   ): Promise<TJWTPair> {
-    const refreshToken = await this.generateRefreshToken(data)
+    const refreshToken =
+      await this.generateRefreshToken(data)
     const accessToken = await this.generateAccessToken(data)
 
     this.logger.verbose('tokens created successfully')
@@ -121,7 +122,8 @@ export class AuthService {
     }
 
     const accessToken = await this.generateAccessToken(data)
-    const refreshToken = await this.generateRefreshToken(data)
+    const refreshToken =
+      await this.generateRefreshToken(data)
 
     this.logger.verbose('tokens re-created successfully')
 
