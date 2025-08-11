@@ -1,7 +1,10 @@
 import 'reflect-metadata'
 import { NestFactory } from '@nestjs/core'
 import { VersioningType } from '@nestjs/common/enums'
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
+import {
+  SwaggerModule,
+  DocumentBuilder,
+} from '@nestjs/swagger'
 import { AppModule } from './app/app.module'
 import { HttpExceptionFilter } from './app/filters/app.http-exception'
 import { ValidationExceptionFilter } from './app/filters/app.validation-exception'
@@ -21,13 +24,22 @@ async function bootstrap() {
   })
 
   app.useGlobalFilters(new HttpExceptionFilter())
-  app.useGlobalFilters(new ValidationExceptionFilter())
+  app.useGlobalFilters(
+    new ValidationExceptionFilter(),
+  )
 
-  const documentFactory = () => SwaggerModule.createDocument(app, config)
-  SwaggerModule.setup('swagger', app, documentFactory)
+  const documentFactory = () =>
+    SwaggerModule.createDocument(app, config)
+  SwaggerModule.setup(
+    'swagger',
+    app,
+    documentFactory,
+  )
 
   if (process.env.APP_PORT === undefined)
-    throw new Error('APP_PORT is undefined, please set env variable value!')
+    throw new Error(
+      'APP_PORT is undefined, please set env variable value!',
+    )
 
   await app.listen(process.env.APP_PORT)
 }

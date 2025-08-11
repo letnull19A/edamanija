@@ -1,5 +1,7 @@
-import { Injectable, Logger } from '@nestjs/common'
-import { LoginByDefaultDto, LoginByDefaultSchema } from './dto/auth-default.dto'
+import {
+  Injectable,
+  Logger,
+} from '@nestjs/common'
 import * as jwt from 'jsonwebtoken'
 
 export type TJWTPair = {
@@ -13,23 +15,34 @@ export class AuthService {
 
   constructor() {}
 
-  public async generateJwtPair(data: any): Promise<TJWTPair> {
-    const accessToken = await jwt.sign(data, 'top secret', {
-      algorithm: 'HS256',
-      expiresIn: 60 * 2,
-    })
+  public async generateJwtPair(
+    data: any,
+  ): Promise<TJWTPair> {
+    const accessToken = await jwt.sign(
+      data,
+      'top secret',
+      {
+        algorithm: 'HS256',
+        expiresIn: 60 * 2,
+      },
+    )
 
-    const refreshToken = await jwt.sign(data, 'refresh top secret', 
-    {
-      algorithm: 'HS512',
-      expiresIn: 60 * 5,
-    })
+    const refreshToken = await jwt.sign(
+      data,
+      'refresh top secret',
+      {
+        algorithm: 'HS512',
+        expiresIn: 60 * 5,
+      },
+    )
 
-    this.logger.verbose('tokens created successfully')
+    this.logger.verbose(
+      'tokens created successfully',
+    )
 
     return {
       access: accessToken,
-      refresh: refreshToken
+      refresh: refreshToken,
     }
   }
 }

@@ -18,7 +18,9 @@ import { UserService } from './user.service'
 export class UserController {
   private readonly logger: Logger
 
-  constructor(private readonly userService: UserService) {
+  constructor(
+    private readonly userService: UserService,
+  ) {
     this.logger = new Logger()
   }
 
@@ -31,21 +33,28 @@ export class UserController {
   @Version('2')
   @Get()
   public async getAllV2(): Promise<Array<any>> {
-    return (await this.userService.getAll()).map((user) => ({
-      name: user.name,
-      surname: user.surname,
-      fatherName: user.fatherName,
-      email: user.email,
-      phone: user.phone,
-      login: user.login,
-    }))
+    return (await this.userService.getAll()).map(
+      (user) => ({
+        name: user.name,
+        surname: user.surname,
+        fatherName: user.fatherName,
+        email: user.email,
+        phone: user.phone,
+        login: user.login,
+      }),
+    )
   }
 
   @Version('1')
   @Get(':id')
-  public async getByIdV1(@Param('id') id: string): Promise<any> {
+  public async getByIdV1(
+    @Param('id') id: string,
+  ): Promise<any> {
     try {
-      const result = await this.userService.findById({ id: id })
+      const result =
+        await this.userService.findById({
+          id: id,
+        })
 
       return result
     } catch (e) {
@@ -54,12 +63,16 @@ export class UserController {
   }
 
   @Post('registration')
-  public async regv1(@Body() data: RegistrationUserDto): Promise<void> {
+  public async regv1(
+    @Body() data: RegistrationUserDto,
+  ): Promise<void> {
     this.logger.verbose('started registration')
 
-    const user = await this.userService.registration(data)
+    const user =
+      await this.userService.registration(data)
 
-    if (user == null) throw new BadRequestException()
+    if (user == null)
+      throw new BadRequestException()
   }
 
   @Put(':id')

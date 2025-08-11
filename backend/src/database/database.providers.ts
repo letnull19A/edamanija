@@ -4,8 +4,13 @@ export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',
     useFactory: async () => {
-      const { PG_HOST, PG_USER, PG_DATABASE, PG_PORT, PG_PASSWORD } =
-        process.env
+      const {
+        PG_HOST,
+        PG_USER,
+        PG_DATABASE,
+        PG_PORT,
+        PG_PASSWORD,
+      } = process.env
 
       const dataSource = new DataSource({
         type: 'postgres',
@@ -14,7 +19,9 @@ export const databaseProviders = [
         username: PG_USER,
         password: PG_PASSWORD,
         database: PG_DATABASE,
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [
+          __dirname + '/../**/*.entity{.ts,.js}',
+        ],
         synchronize: true,
       })
 

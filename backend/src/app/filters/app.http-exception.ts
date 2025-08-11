@@ -8,14 +8,19 @@ import {
 import { Request, Response } from 'express'
 
 @Catch(HttpException)
-export class HttpExceptionFilter implements ExceptionFilter {
+export class HttpExceptionFilter
+  implements ExceptionFilter
+{
   private readonly logger: Logger
 
   constructor() {
     this.logger = new Logger()
   }
 
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(
+    exception: HttpException,
+    host: ArgumentsHost,
+  ) {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
     const request = ctx.getRequest<Request>()
