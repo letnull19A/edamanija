@@ -9,7 +9,9 @@ export default function AuthenticatedLayout({
   return (
     <div className={style.authenticatedLayout}>
       <SideMenu />
-      <div className={style.authenticatedLayoutViewport}>{children}</div>
+      <div className={style.authenticatedLayoutViewport}>
+        {children}
+      </div>
     </div>
   )
 }

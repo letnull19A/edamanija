@@ -9,17 +9,18 @@ describe('UserController', () => {
   let controller: UserController
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        ConfigModule.forRoot({
-          isGlobal: true,
-          envFilePath: ['.env'],
-        }),
-        DatabaseModule,
-      ],
-      providers: [...userProviders, UserService],
-      controllers: [UserController],
-    }).compile()
+    const module: TestingModule =
+      await Test.createTestingModule({
+        imports: [
+          ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath: ['.env'],
+          }),
+          DatabaseModule,
+        ],
+        providers: [...userProviders, UserService],
+        controllers: [UserController],
+      }).compile()
 
     controller = module.get<UserController>(UserController)
   })

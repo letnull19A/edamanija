@@ -11,7 +11,10 @@ export default function AuthForm() {
       <form action=''>
         <TextField title='Логин' />
         <PasswordField title='Пароль' />
-        <Button label='Войти' className={style.authButton} />
+        <Button
+          label='Войти'
+          className={style.authButton}
+        />
       </form>
     </Card>
   )

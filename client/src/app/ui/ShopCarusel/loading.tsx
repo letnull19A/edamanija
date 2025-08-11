@@ -9,7 +9,10 @@ export default function ShopCaruselSceleton() {
   return (
     <div className={style.skeletonCarusel}>
       {values.map((_, index) => (
-        <Skeleton className={style.skeletonCaruselCard} key={index} />
+        <Skeleton
+          className={style.skeletonCaruselCard}
+          key={index}
+        />
       ))}
     </div>
   )

@@ -13,11 +13,15 @@ export default function Dropdown(props: TDropdownProps) {
   return (
     <div className={style.dropdown}>
       {props.title && (
-        <span className={style.dropdownTitle}>{props.title}</span>
+        <span className={style.dropdownTitle}>
+          {props.title}
+        </span>
       )}
       <PrimereactDropdown {...props} />
       {props.helpText && (
-        <span className={style.dropdownHelpText}>{props.helpText}</span>
+        <span className={style.dropdownHelpText}>
+          {props.helpText}
+        </span>
       )}
     </div>
   )
