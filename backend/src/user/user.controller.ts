@@ -18,9 +18,7 @@ import { UserService } from './user.service'
 export class UserController {
   private readonly logger: Logger
 
-  constructor(
-    private readonly userService: UserService,
-  ) {
+  constructor(private readonly userService: UserService) {
     this.logger = new Logger()
   }
 
@@ -51,10 +49,9 @@ export class UserController {
     @Param('id') id: string,
   ): Promise<any> {
     try {
-      const result =
-        await this.userService.findById({
-          id: id,
-        })
+      const result = await this.userService.findById({
+        id: id,
+      })
 
       return result
     } catch (e) {
@@ -68,11 +65,12 @@ export class UserController {
   ): Promise<void> {
     this.logger.verbose('started registration')
 
-    const user =
-      await this.userService.registration(data)
+    const user = await this.userService.registration(data)
 
-    if (user == null)
+    if (user == null) {
+      this.logger.error('failed to create user')
       throw new BadRequestException()
+    }
   }
 
   @Put(':id')

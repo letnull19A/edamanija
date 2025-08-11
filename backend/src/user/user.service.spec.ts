@@ -1,16 +1,11 @@
-import {
-  Test,
-  TestingModule,
-} from '@nestjs/testing'
+import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
 import { DatabaseModule } from './../database/database.module'
 import { userProviders } from './user.providers'
 import { ConfigModule } from '@nestjs/config'
 import { readFileSync } from 'fs'
 
-const readMockData = (
-  fileName: string,
-): Array<any> => {
+const readMockData = (fileName: string): Array<any> => {
   return JSON.parse(
     readFileSync(
       [__dirname, 'data', fileName].join('/'),
@@ -23,9 +18,7 @@ const failRegistrationData = readMockData(
   'failedRegistration.json',
 )
 const formsData = readMockData('forms.json')
-const findByLoginData = readMockData(
-  'findByLogin.json',
-)
+const findByLoginData = readMockData('findByLogin.json')
 const findById = readMockData('findById.json')
 
 describe('mock data defined', () => {
@@ -47,10 +40,7 @@ describe('UserService', () => {
           }),
           DatabaseModule,
         ],
-        providers: [
-          ...userProviders,
-          UserService,
-        ],
+        providers: [...userProviders, UserService],
       }).compile()
 
     service = module.get<UserService>(UserService)
@@ -77,9 +67,9 @@ describe('UserService', () => {
         try {
           await service.registration(form.form)
         } catch (e) {
-          expect(
-            JSON.parse(e.message),
-          ).toMatchObject(form.errors)
+          expect(JSON.parse(e.message)).toMatchObject(
+            form.errors,
+          )
         }
       })
     },
@@ -100,35 +90,24 @@ describe('UserService', () => {
     'fail to add 3 records login or email or phone re-used',
     (form) => {
       it('all fields valid, but datas is used', async () => {
-        expect(
-          service.registration(form),
-        ).rejects.toThrow()
+        expect(service.registration(form)).rejects.toThrow()
       })
     },
   )
 
-  describe.each(formsData)(
-    'passwords',
-    (form) => {
-      it('password is not equal password hash', async () => {
-        expect(
-          (await service.findByLogin(form))
-            .password,
-        ).not.toEqual(form.password)
-      })
-    },
-  )
+  describe.each(formsData)('passwords', (form) => {
+    it('password is not equal password hash', async () => {
+      expect(
+        (await service.findByLogin(form)).password,
+      ).not.toEqual(form.password)
+    })
+  })
 
-  describe.each(findByLoginData)(
-    'findByLogin',
-    (form) => {
-      it(`correct works ${form.data.login} isExist: ${form.isExist}`, async () => {
-        expect(
-          (await service.findByLogin(
-            form.data,
-          )) !== null,
-        ).toStrictEqual(form.isExist)
-      })
-    },
-  )
+  describe.each(findByLoginData)('findByLogin', (form) => {
+    it(`correct works ${form.data.login} isExist: ${form.isExist}`, async () => {
+      expect(
+        (await service.findByLogin(form.data)) !== null,
+      ).toStrictEqual(form.isExist)
+    })
+  })
 })

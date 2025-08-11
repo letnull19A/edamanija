@@ -12,8 +12,7 @@ export const FindByIdSchema = extendApi(
         message: 'not correct format UUID',
       })
       .refine(
-        (data) =>
-          !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+        (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
         {
           message:
             'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',

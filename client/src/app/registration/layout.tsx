@@ -5,5 +5,9 @@ export default function RegistrationLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <div className={style.registrationLayout}>{children}</div>
+  return (
+    <div className={style.registrationLayout}>
+      {children}
+    </div>
+  )
 }

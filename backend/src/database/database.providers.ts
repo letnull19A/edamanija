@@ -19,9 +19,7 @@ export const databaseProviders = [
         username: PG_USER,
         password: PG_PASSWORD,
         database: PG_DATABASE,
-        entities: [
-          __dirname + '/../**/*.entity{.ts,.js}',
-        ],
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
       })
 

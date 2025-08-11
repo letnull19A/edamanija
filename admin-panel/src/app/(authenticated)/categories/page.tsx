@@ -17,7 +17,9 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 export default function Categories() {
   const router = useRouter()
 
-  const categoryQuery = useQuery({ queryKey: ['categories'] })
+  const categoryQuery = useQuery({
+    queryKey: ['categories'],
+  })
   return (
     <>
       <div className={style.toolPanel}>
@@ -40,7 +42,9 @@ export default function Categories() {
         />
       </div>
       <ErrorBoundary
-        errorComponent={({ error }) => <Errors.FailedFatch error={error} />}
+        errorComponent={({ error }) => (
+          <Errors.FailedFatch error={error} />
+        )}
       >
         <DynamicTable />
       </ErrorBoundary>

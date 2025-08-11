@@ -1,7 +1,4 @@
-import {
-  Test,
-  TestingModule,
-} from '@nestjs/testing'
+import { Test, TestingModule } from '@nestjs/testing'
 import { UserController } from './user.controller'
 import { userProviders } from './user.providers'
 import { UserService } from './user.service'
@@ -21,16 +18,11 @@ describe('UserController', () => {
           }),
           DatabaseModule,
         ],
-        providers: [
-          ...userProviders,
-          UserService,
-        ],
+        providers: [...userProviders, UserService],
         controllers: [UserController],
       }).compile()
 
-    controller = module.get<UserController>(
-      UserController,
-    )
+    controller = module.get<UserController>(UserController)
   })
 
   it('should be defined', () => {

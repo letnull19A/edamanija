@@ -11,16 +11,13 @@ export const RegistrationSchema = extendApi(
         .string()
         .nonempty('field is empty')
         .min(8, {
-          message:
-            'field length less than 8 latters',
+          message: 'field length less than 8 latters',
         })
         .max(16, {
-          message:
-            'field shuld be less than 16 latters',
+          message: 'field shuld be less than 16 latters',
         })
         .refine(
-          (data) =>
-            !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+          (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
           {
             message:
               'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -34,16 +31,13 @@ export const RegistrationSchema = extendApi(
         })
         .nonempty('field is empty')
         .min(2, {
-          message:
-            'field length less than 2 latters',
+          message: 'field length less than 2 latters',
         })
         .max(12, {
-          message:
-            'field should be less than 12 latters',
+          message: 'field should be less than 12 latters',
         })
         .refine(
-          (data) =>
-            !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+          (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
           {
             message:
               'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -57,16 +51,13 @@ export const RegistrationSchema = extendApi(
         })
         .nonempty('field is empty')
         .min(1, {
-          message:
-            'field length less than 1 latters',
+          message: 'field length less than 1 latters',
         })
         .max(12, {
-          message:
-            'field should be less than 12 latters',
+          message: 'field should be less than 12 latters',
         })
         .refine(
-          (data) =>
-            !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+          (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
           {
             message:
               'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -79,16 +70,13 @@ export const RegistrationSchema = extendApi(
             'fatherName should be start with upper-case latter',
         })
         .min(1, {
-          message:
-            'field length less than 1 latters',
+          message: 'field length less than 1 latters',
         })
         .max(20, {
-          message:
-            'field should be less than 20 latters',
+          message: 'field should be less than 20 latters',
         })
         .refine(
-          (data) =>
-            !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+          (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
           {
             message:
               'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -99,12 +87,10 @@ export const RegistrationSchema = extendApi(
         .nonempty('field is empty')
         .email('it`s field not email')
         .max(32, {
-          message:
-            'field should be less than 32 latters',
+          message: 'field should be less than 32 latters',
         })
         .refine(
-          (data) =>
-            !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+          (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
           {
             message:
               'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -116,28 +102,23 @@ export const RegistrationSchema = extendApi(
         .string()
         .nonempty('field is empty')
         .min(8, {
-          message:
-            'field length less than 8 latters',
+          message: 'field length less than 8 latters',
         })
         .max(64, {
-          message:
-            'field should be less than 64 latters',
+          message: 'field should be less than 64 latters',
         }),
       confirmPassword: z
         .string()
         .nonempty('field is empty')
         .min(8, {
-          message:
-            'field length less than 8 latters',
+          message: 'field length less than 8 latters',
         })
         .max(64, {
-          message:
-            'field should be less than 64 latters',
+          message: 'field should be less than 64 latters',
         }),
     })
     .refine(
-      (data) =>
-        data.password === data.confirmPassword,
+      (data) => data.password === data.confirmPassword,
       {
         message:
           'password and confirmPassword are not equals',

@@ -3,9 +3,16 @@
 import { Carousel } from 'primereact/carousel'
 import ShopCard, { TShopCardProp } from './ShopCard'
 
-async function fetchPartners(): Promise<Array<TShopCardProp>> {
-  const result = await fetch(`${process.env.NEXT_PUBLIC_API}partners`)
-    .then((data) => data.json() as unknown as Array<TShopCardProp>)
+async function fetchPartners(): Promise<
+  Array<TShopCardProp>
+> {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API}partners`,
+  )
+    .then(
+      (data) =>
+        data.json() as unknown as Array<TShopCardProp>,
+    )
     .then((data) =>
       data.map((element) => ({
         ...element,

@@ -8,16 +8,13 @@ export const LoginByDefaultSchema = extendApi(
       .string()
       .nonempty('field is empty')
       .min(8, {
-        message:
-          'field length less than 8 latters',
+        message: 'field length less than 8 latters',
       })
       .max(16, {
-        message:
-          'field shuld be less than 16 latters',
+        message: 'field shuld be less than 16 latters',
       })
       .refine(
-        (data) =>
-          !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+        (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
         {
           message:
             'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
@@ -27,12 +24,10 @@ export const LoginByDefaultSchema = extendApi(
       .string()
       .nonempty('field is empty')
       .min(8, {
-        message:
-          'field length less than 8 latters',
+        message: 'field length less than 8 latters',
       })
       .max(64, {
-        message:
-          'field should be less than 64 latters',
+        message: 'field should be less than 64 latters',
       }),
   }),
 )

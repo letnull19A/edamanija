@@ -16,6 +16,7 @@ async function bootstrap() {
     .setTitle('Edamanija Rest-API docs')
     .setDescription('Проект Едамания')
     .setVersion('1.0')
+    .addBearerAuth()
     .build()
 
   app.enableVersioning({
@@ -24,17 +25,11 @@ async function bootstrap() {
   })
 
   app.useGlobalFilters(new HttpExceptionFilter())
-  app.useGlobalFilters(
-    new ValidationExceptionFilter(),
-  )
+  app.useGlobalFilters(new ValidationExceptionFilter())
 
   const documentFactory = () =>
     SwaggerModule.createDocument(app, config)
-  SwaggerModule.setup(
-    'swagger',
-    app,
-    documentFactory,
-  )
+  SwaggerModule.setup('swagger', app, documentFactory)
 
   if (process.env.APP_PORT === undefined)
     throw new Error(

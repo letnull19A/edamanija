@@ -1,6 +1,8 @@
+import type { Algorithm } from 'jsonwebtoken'
+
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends PostgresEnv, SecretEnv {
+    interface ProcessEnv extends PostgresEnv, SecretEnv, AccessTokenEnv, RefreshTokenEnv{
       APP_PORT: number
     }
 
@@ -17,12 +19,14 @@ declare global {
     }
 
     interface AccessTokenEnv {
+      ACCESS_ALGORITHM: Algotithm
       ACCESS_SECRET: string
       ACCESS_EXPIRES_IN: number
       ACCESS_ISSUER: string
     }
 
     interface RefreshTokenEnv {
+      REFRESH_ALGORITHM: Algorithm
       REFRESH_SECRET: string
       REFRESH_EXPIRES_IN: number
       REFRESH_ISSUER: string

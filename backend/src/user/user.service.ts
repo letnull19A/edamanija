@@ -1,8 +1,4 @@
-import {
-  Inject,
-  Injectable,
-  Logger,
-} from '@nestjs/common'
+import { Inject, Injectable, Logger } from '@nestjs/common'
 import { User } from './user.entity'
 import {
   RegistrationSchema,
@@ -41,10 +37,9 @@ export class UserService {
     const validData =
       await FindByLoginSchema.parseAsync(data)
 
-    const result =
-      await this.userRepository.findOneBy({
-        login: validData.login,
-      })
+    const result = await this.userRepository.findOneBy({
+      login: validData.login,
+    })
 
     this.logger.verbose(
       result != null
@@ -66,14 +61,11 @@ export class UserService {
   ): Promise<User | null> {
     try {
       const parsedData =
-        await FindByIdDto.zodSchema.parseAsync(
-          data,
-        )
+        await FindByIdDto.zodSchema.parseAsync(data)
 
-      const result =
-        await this.userRepository.findOneBy({
-          id: parsedData.id,
-        })
+      const result = await this.userRepository.findOneBy({
+        id: parsedData.id,
+      })
 
       return result
     } catch (e) {
@@ -90,37 +82,30 @@ export class UserService {
   public async registration(
     data: RegistrationUserDto,
   ): Promise<User | null> {
-    try {
-      const validData =
-        await RegistrationSchema.parseAsync(data)
-      const loginIsUsed = await this.findByLogin({
-        login: validData.login,
-      })
+    const validData =
+      await RegistrationSchema.parseAsync(data)
+    const loginIsUsed = await this.findByLogin({
+      login: validData.login,
+    })
 
-      if (loginIsUsed !== null)
-        throw Error(
-          'login or email or phone is used',
-        )
+    if (loginIsUsed !== null)
+      throw Error('login or email or phone is used')
 
-      const passwordHash = createHash('sha-256')
-        .update(validData.password)
-        .digest('base64')
+    const passwordHash = createHash('sha-256')
+      .update(validData.password)
+      .digest('base64')
 
-      const result =
-        await this.userRepository.save({
-          login: validData.login,
-          password: passwordHash,
-          email: validData.email,
-          gender: validData.gender,
-          name: validData.name,
-          surname: validData.surname,
-          fatherName: validData.fatherName,
-          phone: validData.phone,
-        })
+    const result = await this.userRepository.save({
+      login: validData.login,
+      password: passwordHash,
+      email: validData.email,
+      gender: validData.gender,
+      name: validData.name,
+      surname: validData.surname,
+      fatherName: validData.fatherName,
+      phone: validData.phone,
+    })
 
-      return result
-    } catch (e) {
-      throw Error(e)
-    }
+    return result
   }
 }

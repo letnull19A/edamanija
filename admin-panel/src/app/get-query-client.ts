@@ -25,7 +25,8 @@ export function getQueryClient() {
   if (isServer) {
     return makeQueryClient()
   } else {
-    if (!browserQueryClient) browserQueryClient = makeQueryClient()
+    if (!browserQueryClient)
+      browserQueryClient = makeQueryClient()
     return browserQueryClient
   }
 }
