@@ -1,15 +1,14 @@
-import { 
-  ExceptionFilter, 
-  Catch, 
-  ArgumentsHost, 
-  HttpException, 
-  Logger 
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+  Logger,
 } from '@nestjs/common'
 import { Request, Response } from 'express'
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-
   private readonly logger: Logger
 
   constructor() {
@@ -25,13 +24,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     this.logger.error('failed http-query!')
 
-   response
-     .status(status)
-     .json({
-       message: message,
-       statusCode: status,
-       timestamp: new Date().toISOString(),
-       path: request.url
+    response.status(status).json({
+      message: message,
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
     })
   }
 }

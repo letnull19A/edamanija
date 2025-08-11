@@ -1,9 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { 
-  LoginByDefaultDto, 
-  LoginByDefaultSchema 
-} from './dto/auth-default.dto'
+import { LoginByDefaultDto, LoginByDefaultSchema } from './dto/auth-default.dto'
 import * as jwt from 'jsonwebtoken'
+
+export type TJWTPair = {
+  access: string
+  refresh: string
+}
 
 @Injectable()
 export class AuthService {
@@ -11,28 +13,23 @@ export class AuthService {
 
   constructor() {}
 
-  public async generateJwtPair(): 
-Promise<object> {
+  public async generateJwtPair(data: any): Promise<TJWTPair> {
+    const accessToken = await jwt.sign(data, 'top secret', {
+      algorithm: 'HS256',
+      expiresIn: 60 * 2,
+    })
 
-    const payload = {
-      id: 0,
-      name: 'Alex',
-      surname: 'Wolkow',
-      nickname: 'letnull19a',
-      email: 'letnul19a@gmail.com'
-    }
+    const refreshToken = await jwt.sign(data, 'refresh top secret', 
+    {
+      algorithm: 'HS512',
+      expiresIn: 60 * 5,
+    })
 
-    const accessToken = await jwt
-      .sign(
-        payload, 
-        'top secret', 
-        { 
-          algorithm: 'HS256', 
-          expiresIn: 60 * 2 
-        })
+    this.logger.verbose('tokens created successfully')
 
     return {
-      access: accessToken
+      access: accessToken,
+      refresh: refreshToken
     }
   }
 }

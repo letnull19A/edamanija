@@ -3,12 +3,8 @@ import { NestFactory } from '@nestjs/core'
 import { VersioningType } from '@nestjs/common/enums'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app/app.module'
-import { 
-  HttpExceptionFilter, 
-} from './app/filters/app.http-exception'
-import { 
-  ValidationExceptionFilter
-} from './app/filters/app.validation-exception' 
+import { HttpExceptionFilter } from './app/filters/app.http-exception'
+import { ValidationExceptionFilter } from './app/filters/app.validation-exception'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)

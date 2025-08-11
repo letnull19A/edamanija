@@ -13,7 +13,19 @@ declare global {
     }
 
     interface SecretEnv {
-      SECRET_PASSWORD_SALT: stiring
+      SECRET_PASSWORD_SALT: string
+    }
+
+    interface AccessTokenEnv {
+      ACCESS_SECRET: string
+      ACCESS_EXPIRES_IN: number
+      ACCESS_ISSUER: string
+    }
+
+    interface RefreshTokenEnv {
+      REFRESH_SECRET: string
+      REFRESH_EXPIRES_IN: number
+      REFRESH_ISSUER: string
     }
   }
 }

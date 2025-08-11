@@ -16,7 +16,6 @@ import { UserService } from './user.service'
 
 @Controller('user')
 export class UserController {
-
   private readonly logger: Logger
 
   constructor(private readonly userService: UserService) {
@@ -55,15 +54,12 @@ export class UserController {
   }
 
   @Post('registration')
-  public async regv1(@Body() data: RegistrationUserDto): 
-Promise<void> {
-
+  public async regv1(@Body() data: RegistrationUserDto): Promise<void> {
     this.logger.verbose('started registration')
 
     const user = await this.userService.registration(data)
 
-    if (user == null)
-      throw new BadRequestException()
+    if (user == null) throw new BadRequestException()
   }
 
   @Put(':id')
