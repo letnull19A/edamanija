@@ -16,4 +16,20 @@ describe('AuthService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined()
   })
+
+  describe('not found account, () => {
+
+  })
+
+  describe('successfully login', () => {
+
+  })
+
+  describe('successfully refresh tokens', () => {
+
+  })
+
+  describe('failed to refresh tokens', () => {
+
+  })
 })
