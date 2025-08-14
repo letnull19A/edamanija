@@ -84,6 +84,18 @@ export class AuthService {
     return refreshToken
   }
 
+  private async extractData(origin: any): Promise<object> {
+    const data = {
+      id: origin?.id,
+      name: origin?.name,
+      surname: origin?.surname,
+      fatherName: origin?.fatherName,
+      email: origin?.email,
+    }
+
+    return data
+  }
+
   public async generateJwtPair(
     data: any,
   ): Promise<TJWTPair> {
@@ -107,23 +119,19 @@ export class AuthService {
       process.env.REFRESH_SECRET,
     ) as string
 
-    console.log(isVerify)
-
-    if (!isVerify) return null
-
-    const verifyData = JSON.parse(isVerify)
-
-    const data = {
-      id: verifyData?.id,
-      name: verifyData?.name,
-      surname: verifyData?.surname,
-      fatherName: verifyData?.fatherName,
-      email: verifyData?.email,
+    if (!isVerify) {
+      this.logger.verbose(
+        'failed to refresh tokens, because is refresh expired',
+      )
+      return null
     }
 
-    const accessToken = await this.generateAccessToken(data)
+    const verifyData = JSON.parse(isVerify)
+    const userData = await this.extractData(verifyData)
+    const accessToken =
+      await this.generateAccessToken(userData)
     const refreshToken =
-      await this.generateRefreshToken(data)
+      await this.generateRefreshToken(userData)
 
     this.logger.verbose('tokens re-created successfully')
 
