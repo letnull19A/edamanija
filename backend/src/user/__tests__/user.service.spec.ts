@@ -1,14 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { UserService } from './user.service'
-import { DatabaseModule } from './../database/database.module'
-import { userProviders } from './user.providers'
+import { UserService } from './../user.service'
+import { DatabaseModule } from './../../database/database.module'
+import { userProviders } from './../user.providers'
 import { ConfigModule } from '@nestjs/config'
 import { readFileSync } from 'fs'
+
+//TODO: сделать рефакторинг до следующего вида:
+// tests/
+//  ├── service.spec.ts
+//  ├── controller.spec.ts
+//  ├── fixtures/
+//  ├────
+//  ладно потом сделаю... а то не доделаю этот проект
 
 const readMockData = (fileName: string): Array<any> => {
   return JSON.parse(
     readFileSync(
-      [__dirname, 'data', fileName].join('/'),
+      [__dirname, 'fixtures', fileName].join('/'),
       'utf-8',
     ),
   )

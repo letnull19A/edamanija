@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { UserController } from './user.controller'
-import { userProviders } from './user.providers'
-import { UserService } from './user.service'
-import { DatabaseModule } from './../database/database.module'
+import { UserController } from './../user.controller'
+import { userProviders } from './../user.providers'
+import { UserService } from './../user.service'
+import { DatabaseModule } from './../../database/database.module'
 import { ConfigModule } from '@nestjs/config'
 
 describe('UserController', () => {
