@@ -2,7 +2,11 @@ import type { Algorithm } from 'jsonwebtoken'
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends PostgresEnv, SecretEnv, AccessTokenEnv, RefreshTokenEnv{
+    interface ProcessEnv extends 
+      PostgresEnv, 
+      SecretEnv, 
+      AccessTokenEnv, 
+      RefreshTokenEnv {
       APP_PORT: number
     }
 
