@@ -1,10 +1,13 @@
 'use client'
 
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { Button } from 'primereact/button'
-import style from './style.module.css'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
+import { useQuery } from '@tanstack/react-query'
+
+import style from './style.module.css'
+import { Errors } from '@/components/Errors'
 
 const DynamicTable = dynamic(() => import('./ui/Table'), {
   loading: () => <>Loading component...</>,
@@ -12,19 +15,11 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 })
 
 export default function Categories() {
-  const dataOptions = queryOptions({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}categories`)
-
-      return response.json()
-    },
-  })
-
-  const { data, refetch, isFetching } = useSuspenseQuery(dataOptions)
-
   const router = useRouter()
 
+  const categoryQuery = useQuery({
+    queryKey: ['categories'],
+  })
   return (
     <>
       <div className={style.toolPanel}>
@@ -39,14 +34,20 @@ export default function Categories() {
           severity='danger'
         />
         <Button
-          disabled={isFetching}
-          icon={`pi ${isFetching ? 'pi-spin' : ''} pi-sync`}
-          label='Обновить'
+          disabled={categoryQuery.isFetching}
+          icon={`pi ${categoryQuery.isFetching ? 'pi-spin' : ''} pi-sync`}
+          label={`${categoryQuery.isFetching ? 'Обновление данных' : 'Обновить'}`}
           severity='warning'
-          onClick={() => refetch()}
+          onClick={() => categoryQuery.refetch()}
         />
       </div>
-      <DynamicTable data={data} />
+      <ErrorBoundary
+        errorComponent={({ error }) => (
+          <Errors.FailedFatch error={error} />
+        )}
+      >
+        <DynamicTable />
+      </ErrorBoundary>
     </>
   )
 }

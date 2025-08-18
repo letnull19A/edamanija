@@ -1,0 +1,81 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.5 (Debian 17.5-1.pgdg120+1)
+-- Dumped by pg_dump version 17.5 (Debian 17.5-1.pgdg120+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."user" (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    name character varying DEFAULT ''::character varying NOT NULL,
+    surname character varying DEFAULT ''::character varying NOT NULL,
+    "fatherName" character varying DEFAULT ''::character varying NOT NULL,
+    gender character varying DEFAULT 'NOBODY'::character varying NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    phone character varying DEFAULT ''::character varying NOT NULL,
+    login character varying NOT NULL,
+    password character varying DEFAULT ''::character varying NOT NULL
+);
+
+
+ALTER TABLE public."user" OWNER TO postgres;
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."user" (id, name, surname, "fatherName", gender, email, phone, login, password) FROM stdin;
+bf3fd867-7f27-4e9a-b045-a78dd0500dd1	Мария	Волкова	Александровна	FEMALE	volkova.56@example.com	+79184563210	mari_vol_789	EYoJXNrEuC4n0zGX/ZsFekpd7pcPy4kueoVB1tFCQnM=
+525d9b6a-94ae-421b-9e24-e183a3262e51	Игорь	Николаев	Олегович	MALE	nikolaev.44@example.com	+79051237894	igor_nik_234	JHY4EOehKBKyoej2EsqhpevkjH9tTryKjVUQeeWWGVE=
+5c37f139-a9f7-4247-88a7-ceccddaf431b	Елена	Федорова	Викторовна	FEMALE	fedorova.29@example.com	+79213456789	lena_fed_567	dYm3o/UV82bpmpWp8+I6gAtGibThwlhWgwwZTh2Qql8=
+db93997e-0e7e-4f24-87bb-a3e17cd770b8	Артем	Павлов	Сергеевич	MALE	pavlov.63@example.com	+79658741230	artem_pav_890	I7D7irvWDaplJV/U3ftzrDm+4xOu21A04tP1r91wzEY=
+e6e57c7d-37bb-4f49-b72a-1c38742337cb	Светлана	Романова	Игоревна	FEMALE	romanova.71@example.com	+79034561278	svet_rom_123	S7i1cI8cEEfXujZki5Xg8Y17g80kttDh2X5zRViKPbI=
+\.
+
+
+--
+-- Name: user PK_cace4a159ff9f2512dd42373760; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

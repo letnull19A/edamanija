@@ -1,4 +1,7 @@
-import { CardProps, Card as PrimeReactCard } from 'primereact/card'
+import {
+  CardProps,
+  Card as PrimeReactCard,
+} from 'primereact/card'
 import style from './style.module.css'
 
 export default function Card(props: CardProps) {

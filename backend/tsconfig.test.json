@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "resolveJsonModule": true,
+  "sourceMap": false,
+  "exclude": ["node_modules", "dist"],
+  "include": ["test/jest-pre-release.json", "src", "test", "./environment.d.ts", "src/user/data/*.json"]
+}

@@ -1,0 +1,40 @@
+version: '3'
+name: 'edamanija_test'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - '5423:5432'
+    volumes:
+      - test_postgres-data:/var/lib/postgresql/data/
+      - './postgres/dataset:/docker-entrypoint-initdb.d'
+    restart: always
+    env_file:
+      - ./postgres/.env.test
+    networks:
+      test_edamanija_network:
+        ipv4_address: 67.89.1.4
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.test
+    ports:
+      - '8973:8973'
+    depends_on:
+      - postgres
+    networks:
+      test_edamanija_network:
+        ipv4_address: 67.89.2.1
+
+volumes:
+  test_postgres-data:
+
+networks:
+  test_edamanija_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 67.89.0.0/16
+          gateway: 67.89.0.1
