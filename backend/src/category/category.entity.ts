@@ -15,7 +15,7 @@ export class Category extends BaseEntity {
 
   @Column({
     default: '',
-    description: 'description here...',
+    comment: 'description here...',
   })
   description: string
 
