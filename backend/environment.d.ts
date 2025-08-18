@@ -7,7 +7,6 @@ declare global {
       SecretEnv, 
       AccessTokenEnv, 
       RefreshTokenEnv {
->>>>>>> backend-auth
       APP_PORT: number
     }
 
