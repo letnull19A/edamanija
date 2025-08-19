@@ -26,6 +26,9 @@ export class CategoryService {
     return new Promise((resolve) => resolve({}))
   }
 
+  /***
+   * @description - редактирует категорию:w
+   */
   public async edit(): Promise<object> {
     return new Promise((resolve) => resolve({}))
   }
