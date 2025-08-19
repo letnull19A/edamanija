@@ -30,4 +30,10 @@ export class CategoryController {
   private async getAllV2(): Promise<Array<object>> {
     return new Promise((resolve) => resolve([]))
   }
+
+  @Version('1')
+  @Put()
+  public async editV1(): Promise<object> {
+    return new Promise((resolve) => resolve({}))
+  }
 }
