@@ -25,14 +25,14 @@ declare global {
     interface AccessTokenEnv {
       ACCESS_ALGORITHM: Algotithm
       ACCESS_SECRET: string
-      ACCESS_EXPIRES_IN: number
+      ACCESS_EXPIRES_IN: number | string
       ACCESS_ISSUER: string
     }
 
     interface RefreshTokenEnv {
       REFRESH_ALGORITHM: Algorithm
       REFRESH_SECRET: string
-      REFRESH_EXPIRES_IN: number
+      REFRESH_EXPIRES_IN: number | string
       REFRESH_ISSUER: string
     }
   }
