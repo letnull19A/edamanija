@@ -12,11 +12,21 @@ export class CategoryService {
     return new Promise((resolve) => resolve([]))
   }
 
+  /***
+   * @description - создаёт категорию
+   */
   public async create(): Promise<object> {
     return new Promise((resolve) => resolve({}))
   }
 
+  /***
+   * @description - удаляет категорию
+   */
   public async remove(): Promise<object> {
+    return new Promise((resolve) => resolve({}))
+  }
+
+  public async edit(): Promise<object> {
     return new Promise((resolve) => resolve({}))
   }
 }
