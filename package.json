@@ -3,14 +3,12 @@
 	"name": "edamanija",
 	"author": "letnull19a",
 	"devDependencies": {
-		"concurrently": "^9.1.2",
 		"husky": "^9.1.7",
 		"prettier": "^3.5.3"
 	},
 	"scripts": {
 		"prepare": "husky",
-		"format": "prettier --write **/src/**/*{.js,.ts,.tsx,.jsx}",
-		"dev": "pm2 start ecosystem.config.js"
+		"format": "prettier --write **/src/**/*{.js,.ts,.tsx,.jsx}"
 	},
 	"dependencies": {
 		"typescript": "^5.8.3"

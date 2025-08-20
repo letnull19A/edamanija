@@ -7,8 +7,14 @@ import style from './style.module.css'
 
 type TProductCardProps = TProduct
 
-export default function ProductCard(props: TProductCardProps) {
-  const title = <h4 className={style.productCardTitle}>{props.title}</h4>
+export default function ProductCard(
+  props: TProductCardProps,
+) {
+  const title = (
+    <h4 className={style.productCardTitle}>
+      {props.title}
+    </h4>
+  )
 
   const header = (
     <Image

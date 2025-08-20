@@ -3,8 +3,12 @@ import ProductCard from '../../../components/ProductCard'
 import style from './style.module.css'
 
 async function fetchProducts(): Promise<Array<TProduct>> {
-  const result = await fetch(`${process.env.NEXT_PUBLIC_API}products`)
-    .then((data) => data.json() as unknown as Array<TProduct>)
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API}products`,
+  )
+    .then(
+      (data) => data.json() as unknown as Array<TProduct>,
+    )
     .then((data) =>
       data.map((element) => ({
         ...element,

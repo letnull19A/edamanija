@@ -1,4 +1,7 @@
-import { ButtonProps, Button as PrimeReactButton } from 'primereact/button'
+import {
+  ButtonProps,
+  Button as PrimeReactButton,
+} from 'primereact/button'
 import style from './style.module.css'
 
 export default function Button(props: ButtonProps) {

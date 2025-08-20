@@ -3,5 +3,5 @@
 	url = https://github.com/Web2Bizz/web2bizz-translator.git
 
 [submodule ".vimrc"]
-  path = .vimrc
-  url = https://github.com/letnull19A/.vimrc
+	path = .vimrc
+	url = https://github.com/letnull19A/.vimrc

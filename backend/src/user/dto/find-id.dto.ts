@@ -8,11 +8,19 @@ export const FindByIdSchema = extendApi(
       .string()
       .nonempty('field is empty')
       .uuid('field is not UUID')
-      .length(36, { message: 'not correct format UUID' })
-      .refine((data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/), {
-        message: 'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
-      }),
+      .length(36, {
+        message: 'not correct format UUID',
+      })
+      .refine(
+        (data) => !data.match(/[<>\/\\*&^%`\[\]{}()]/),
+        {
+          message:
+            'field shouldn`t contain symbols: [<>\/\\*&^%`\[\]{}()]',
+        },
+      ),
   }),
 )
 
-export class FindByIdDto extends createZodDto(FindByIdSchema) {}
+export class FindByIdDto extends createZodDto(
+  FindByIdSchema,
+) {}

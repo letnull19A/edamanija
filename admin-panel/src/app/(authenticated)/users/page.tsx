@@ -17,7 +17,9 @@ const DynamicTable = dynamic(() => import('./ui/Table'), {
 export default function Users() {
   const router = useRouter()
 
-  const userQuery = useQuery({ queryKey: ['users'] })
+  const userQuery = useQuery({
+    queryKey: ['users'],
+  })
 
   return (
     <>
@@ -41,7 +43,9 @@ export default function Users() {
         />
       </div>
       <ErrorBoundary
-        errorComponent={({ error }) => <Errors.FailedFatch error={error} />}
+        errorComponent={({ error }) => (
+          <Errors.FailedFatch error={error} />
+        )}
       >
         <DynamicTable />
       </ErrorBoundary>

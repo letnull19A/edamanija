@@ -17,7 +17,10 @@ export default function Header() {
         <div className={style.headerSearch}>
           <TextField placeholder='Найти товар' />
         </div>
-        <Button className={style.headerButtonSearch} label='Найти' />
+        <Button
+          className={style.headerButtonSearch}
+          label='Найти'
+        />
         <div className={style.headerAuth}>
           <PrimeReactButton
             text
@@ -25,7 +28,11 @@ export default function Header() {
             link
             onClick={() => router.push('/auth')}
           />
-          <PrimeReactButton text icon='pi pi-shopping-cart' link />
+          <PrimeReactButton
+            text
+            icon='pi pi-shopping-cart'
+            link
+          />
         </div>
       </Container>
     </header>

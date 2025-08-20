@@ -12,7 +12,11 @@ export default function AddCategoryPage() {
       <h1>Добавление категории</h1>
       <form>
         <TextField title='Название' />
-        <ErrorBoundary errorComponent={() => <>Failed to load categories</>}>
+        <ErrorBoundary
+          errorComponent={() => (
+            <>Failed to load categories</>
+          )}
+        >
           <CategoriesDropdown />
         </ErrorBoundary>
         <Button icon='pi pi-save' label='Сохранить' />
