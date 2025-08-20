@@ -1,0 +1,5 @@
+[
+  { "data": { "login": "sergey_mor_654" }, "isExist": true },
+  { "data": { "login": "olga_iva_123" }, "isExist": true },
+  { "data": { "login": "levij_typ" }, "isExist": false }
+]
