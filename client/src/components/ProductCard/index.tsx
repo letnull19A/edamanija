@@ -58,9 +58,7 @@ export default function ProductCard(
               rounded
               value={item.title}
               key={index}
-              style={{
-                backgroundColor: item.color,
-              }}
+              style={{ backgroundColor: item.color }}
             ></Tag>
           ))}
         </div>
