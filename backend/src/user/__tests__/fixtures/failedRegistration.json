@@ -1,0 +1,459 @@
+[
+  {
+    "form": {
+      "login": "",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_small",
+        "minimum": 1,
+        "inclusive": true,
+        "path": ["login"],
+        "message": "field is empty"
+      },
+      {
+        "code": "too_small",
+        "minimum": 8,
+        "inclusive": true,
+        "path": ["login"],
+        "message": "field length less than 8 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smo",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_small",
+        "minimum": 8,
+        "inclusive": true,
+        "path": ["login"],
+        "message": "field length less than 8 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnikova9999999",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_big",
+        "path": ["login"],
+        "message": "field shuld be less than 16 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "<smolnik99>",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "custom",
+        "path": ["login"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["name"],
+        "message": "name should be start with upper-case latter"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["name"],
+        "message": "name should be start with upper-case latter"
+      },
+      {
+        "code": "too_small",
+        "minimum": 1,
+        "inclusive": true,
+        "path": ["name"],
+        "message": "field is empty"
+      },
+      {
+        "code": "too_small",
+        "message": "field length less than 2 latters",
+        "path": ["name"]
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Е",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_small",
+        "minimum": 2,
+        "inclusive": true,
+        "path": ["name"],
+        "message": "field length less than 2 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "ЕкатеринаЕкатеринаЕкатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_big",
+        "inclusive": true,
+        "path": ["name"],
+        "message": "field should be less than 12 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина&",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "custom",
+        "path": ["name"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "^Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["name"],
+        "message": "name should be start with upper-case latter"
+      },
+      {
+        "code": "custom",
+        "path": ["name"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["surname"],
+        "message": "surname should be start with upper-case latter"
+      },
+      {
+        "code": "too_small",
+        "minimum": 1,
+        "inclusive": true,
+        "path": ["surname"],
+        "message": "field is empty"
+      },
+      {
+        "code": "too_small",
+        "message": "field length less than 1 latters",
+        "minimum": 1,
+        "path": ["surname"]
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "с",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["surname"],
+        "message": "surname should be start with upper-case latter"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["surname"],
+        "message": "surname should be start with upper-case latter"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "СмольниковаСмольниковаСмольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "too_big",
+        "inclusive": true,
+        "path": ["surname"],
+        "message": "field should be less than 12 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "Смольникова%",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "custom",
+        "path": ["surname"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "*Смольникова",
+      "fatherName": "Дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["surname"],
+        "message": "surname should be start with upper-case latter"
+      },
+      {
+        "code": "custom",
+        "path": ["surname"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "дмитриевиевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["fatherName"],
+        "message": "fatherName should be start with upper-case latter"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "д",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["fatherName"],
+        "message": "fatherName should be start with upper-case latter"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "ДмитриевнаДмитриевнаДмитриевна",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "maximum": 20,
+        "inclusive": true,
+        "code": "too_big",
+        "path": ["fatherName"],
+        "message": "field should be less than 20 latters"
+      }
+    ]
+  },
+  {
+    "form": {
+      "login": "smolnik2004",
+      "name": "Екатерина",
+      "surname": "Смольникова",
+      "fatherName": "дмитриевиевна)",
+      "gender": "FEMALE",
+      "email": "smolnikova73@mail.ru",
+      "phone": "+79998880077",
+      "password": "74398573498573498573498573498",
+      "confirmPassword": "74398573498573498573498573498"
+    },
+    "errors": [
+      {
+        "code": "invalid_string",
+        "path": ["fatherName"],
+        "message": "fatherName should be start with upper-case latter"
+      },
+      {
+        "code": "custom",
+        "path": ["fatherName"],
+        "message": "field shouldn`t contain symbols: [<>\/\\*&^%`[]{}()]"
+      }
+    ]
+  }
+]
