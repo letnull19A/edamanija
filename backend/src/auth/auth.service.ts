@@ -1,5 +1,10 @@
-import { Injectable, Logger } from '@nestjs/common'
+import {
+  Injectable,
+  Logger,
+  OnModuleInit,
+} from '@nestjs/common'
 import * as jwt from 'jsonwebtoken'
+import { JWTEnvSchema } from './env.schema'
 
 export type TJWTPair = {
   access: string
@@ -15,11 +20,27 @@ export type TJWTPayload = {
 }
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnModuleInit {
   private readonly logger: Logger
 
   constructor() {
     this.logger = new Logger(AuthService.name)
+  }
+
+  onModuleInit() {
+    const envs = process.env
+
+    const authEnvs = {
+      ACCESS_ALGORITHM: envs.ACCESS_ALGORITHM,
+      ACCESS_SECRET: envs.ACCESS_SECRET,
+      ACCESS_EXPIRES_IN: envs.ACCESS_EXPIRES_IN,
+      ACCESS_ISSUER: envs.ACCESS_ISSUER,
+      REFRESH_ALGORITHM: envs.REFRESH_ALGORITHM,
+      REFRESH_SECRET: envs.REFRESH_SECRET,
+      REFRESH_EXPIRES_IN: envs.REFRESH_EXPIRES_IN,
+      REFRESH_ISSUER: envs.REFRESH_ISSUER,
+    }
+    JWTEnvSchema.parse(authEnvs)
   }
 
   private async generateAccessToken(
@@ -32,19 +53,13 @@ export class AuthService {
       ACCESS_ISSUER,
     } = process.env
 
-    if (
-      ACCESS_EXPIRES_IN < 1 ||
-      ACCESS_EXPIRES_IN === undefined
-    )
-      throw Error(
-        'ACCESS_EXPIRES_IN is undefined or is negative',
-      )
-
     const accessToken = await jwt.sign(
       data,
       ACCESS_SECRET,
       {
-        expiresIn: ACCESS_EXPIRES_IN,
+        expiresIn: Number.parseInt(
+          ACCESS_EXPIRES_IN.toString(),
+        ),
         algorithm: ACCESS_ALGORITHM,
         issuer: ACCESS_ISSUER,
       },
@@ -63,19 +78,13 @@ export class AuthService {
       REFRESH_ISSUER,
     } = process.env
 
-    if (
-      REFRESH_EXPIRES_IN < 1 ||
-      REFRESH_EXPIRES_IN === undefined
-    )
-      throw Error(
-        'REFRESH_EXPIRES_IN is undefined or is negative',
-      )
-
     const refreshToken = await jwt.sign(
       data,
       REFRESH_SECRET,
       {
-        expiresIn: REFRESH_EXPIRES_IN,
+        expiresIn: Number.parseInt(
+          REFRESH_EXPIRES_IN.toString(),
+        ),
         algorithm: REFRESH_ALGORITHM,
         issuer: REFRESH_ISSUER,
       },

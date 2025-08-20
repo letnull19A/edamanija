@@ -1,4 +1,4 @@
-import { AuthService } from './auth.service'
+import { AuthService } from './../auth.service'
 
 describe('AuthService', () => {
   let authService: AuthService
@@ -6,6 +6,7 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     process.env = {
+      ...process.env,
       ACCESS_ALGORITHM: 'HS256',
       ACCESS_SECRET: 'supersecretkey',
       ACCESS_ISSUER: 'test-issuer',
