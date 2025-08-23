@@ -1,6 +1,55 @@
 [
   {
-    "input": {},
-    "expected": {}
+    "input": {"pick": -1, "offset": -1},
+    "expect": { 
+      "length": -1,
+      "errorMessageCollection": [
+        "pick can not be negative",
+        "offset can not be negative"
+      ]
+    }
+  },
+  {
+    "input": {"pick": 0},
+    "expect": { 
+      "length": -1,
+      "errorMessageCollection": [
+        "pick can not be equal 0",
+        "offset can not be undefined or null"
+      ]
+    }
+  },
+  {
+    "input": {"pick": "UNDEFINED", "offset": 1},
+    "expect": { 
+      "length": -1,
+      "errorMessageCollection": [
+        "pick can not be string, but expect number",
+        "offset can not be negative"
+      ]
+    }
+  },
+  {
+    "input": {"pick": 1, "offset": "TEST STRING"},
+    "expect": [
+      "length": -1,
+      "errorMessageCollection": [
+        "offset can not be string, but expect number"
+      ]
+    ]
+  },
+  {
+    "input": {"pick": 1, "offset": 20},
+    "expect": [
+      "length": 1,
+      "errorMessageCollection": []
+    ]
+  },
+  {
+    "input": {"pick": 10, "offset": 0},
+    "expect": [
+      "length": 10,
+      "errorMessageCollection": []
+    ]
   }
 ]
