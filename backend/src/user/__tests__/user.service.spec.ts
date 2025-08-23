@@ -35,6 +35,8 @@ describe('mock data defined', () => {
   })
 })
 
+//FIXME: сделать рефаторинг связанный с изменениями струтуры тестов,
+//теперь всё на фабриках базируется
 describe('UserService', () => {
   let service: UserService
 

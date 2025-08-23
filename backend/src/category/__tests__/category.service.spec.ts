@@ -1,11 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { CategoryService } from './../category.service'
 import { CommonErrorFormat } from './../../libs/cef'
+import { categoryProviders } from './../category.providers'
+import { DatabaseModule } from './../../database/database.module'
 import { readFileSync } from 'fs'
 
 //FIXME: перенести типы в общую библиотеку
 type TFixtureResult = {
-  length?: number
+  length: number
   errorMessageCollection: Array<string>
 }
 
@@ -19,7 +21,7 @@ type TFixture = {
 /**
  * @description - читает json файл и преобразует в тестовые данные
  * */
-const readFixture = (fileName: string): Array<any> => {
+const readFixture = (fileName: string): Array<TFixture> => {
   return JSON.parse(
     readFileSync(
       [__dirname, 'fixtures', fileName + '.json'].join('/'),
@@ -35,8 +37,8 @@ const testFixtureFactory = (fileName: string) => {
   const data = readFixture(fileName)
 
   return describe.each(data)(fileName, (data) => {
-    it(data.description, () => {
-      expect(data.expect).toEqual(data.expect)
+    it(data.description, async () => {
+      expect(true).toEqual(true)
     })
   })
 }
@@ -47,7 +49,8 @@ describe('CategoryService', () => {
   beforeEach(async () => {
     const module: TestingModule =
       await Test.createTestingModule({
-        providers: [CategoryService],
+        imports: [DatabaseModule],
+        providers: [...categoryProviders, CategoryService],
       }).compile()
 
     service = module.get<CategoryService>(CategoryService)

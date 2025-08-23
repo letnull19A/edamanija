@@ -15,7 +15,7 @@ export class CategoryService {
 
   public async getAll(): Promise<Array<object>> {
     this.logger.verbose('getting category list')
-    return new Promise((resolve) => resolve([]))
+    return await this.categoryRepository.find({})
   }
 
   /***
