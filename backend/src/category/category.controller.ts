@@ -8,6 +8,7 @@ import {
   Param,
   Version,
   Logger,
+  Query,
   BadRequestException,
 } from '@nestjs/common'
 import { CategoryService } from './category.service'
@@ -24,14 +25,11 @@ export class CategoryController {
 
   @Version('1')
   @Get()
-  private async getAllV1(): Promise<Array<object>> {
+  private async getAllV1(
+    @Query('pick') pick: number,
+    @Query('offset') offset: number,
+  ): Promise<Array<object>> {
     return await this.categoryService.getAll()
-  }
-
-  @Version('2')
-  @Get()
-  private async getAllV2(): Promise<Array<object>> {
-    return new Promise((resolve) => resolve([]))
   }
 
   @Version('1')
