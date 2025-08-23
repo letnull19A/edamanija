@@ -8,7 +8,7 @@ export class CommonErrorFormat {
   }
 
   constructor(error: Error) {
-    this._errorMessageCollection = [ error.message ]
+    this._errorMessageCollection = [error.message]
   }
 }
 
@@ -16,6 +16,8 @@ export class ZodCEF extends CommonErrorFormat {
   constructor(error: ZodError) {
     super(error)
 
-    this._errorMessageCollection = error.issues.map(error => error.message)
-  } 
+    this._errorMessageCollection = error.issues.map(
+      (error) => error.message,
+    )
+  }
 }
