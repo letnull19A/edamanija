@@ -9,6 +9,10 @@ import { AppModule } from './app/app.module'
 import { HttpExceptionFilter } from './app/filters/app.http-exception'
 import { JWTExpiredExceptionFilter } from './app/filters/app.jwt-expired'
 import { ValidationExceptionFilter } from './app/filters/app.validation-exception'
+import {
+  SwaggerTheme,
+  SwaggerThemeNameEnum,
+} from 'swagger-themes'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -31,7 +35,18 @@ async function bootstrap() {
 
   const documentFactory = () =>
     SwaggerModule.createDocument(app, config)
-  SwaggerModule.setup('swagger', app, documentFactory)
+  const themes = new SwaggerTheme()
+  const options = {
+    explorer: true,
+    customCss: themes.getBuffer(SwaggerThemeNameEnum.DARK),
+  }
+
+  SwaggerModule.setup(
+    'swagger',
+    app,
+    documentFactory,
+    options,
+  )
 
   if (process.env.APP_PORT === undefined)
     throw new Error(
