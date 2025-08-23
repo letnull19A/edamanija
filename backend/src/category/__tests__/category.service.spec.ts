@@ -17,8 +17,8 @@ type TFixture = {
 
 //FIXME: нужен рефакторинг
 /**
-* @description - читает json файл и преобразует в тестовые данные
-* */
+ * @description - читает json файл и преобразует в тестовые данные
+ * */
 const readFixture = (fileName: string): Array<any> => {
   return JSON.parse(
     readFileSync(
@@ -34,14 +34,11 @@ const readFixture = (fileName: string): Array<any> => {
 const testFixtureFactory = (fileName: string) => {
   const data = readFixture(fileName)
 
-  return describe.each(data)(
-    fileName,
-    (data) => {
-     it(data.description, () => {
-      expect(data.expect).toEqual(data.expect) 
-     })
-    }
-  )
+  return describe.each(data)(fileName, (data) => {
+    it(data.description, () => {
+      expect(data.expect).toEqual(data.expect)
+    })
+  })
 }
 
 describe('CategoryService', () => {
